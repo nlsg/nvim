@@ -1,3 +1,4 @@
+set number
 set relativenumber
 
 set clipboard=unnamedplus
@@ -18,7 +19,7 @@ call plug#end()
 
 set foldmethod=indent
 nnoremap <space> za
-vnoremap <C-Space> zA
+vnoremap <S-Space> zA
 
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
