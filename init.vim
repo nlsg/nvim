@@ -33,13 +33,16 @@ let g:jedi#rename_command = "<leader>r"
 let g:airline_theme='owo'
 
 nnoremap tt :tabnew 
-nnoremap <S-k> :tabn<CR>
-nnoremap <S-j> :tabp<CR>
+nnoremap <C-k> :tabn<CR>
+nnoremap <C-j> :tabp<CR>
 
-nnoremap <C-k> {
-nnoremap <C-j> }
+tnoremap <C-k> :tabn<CR>
+tnoremap <C-j> :tabp<CR>
 
-nmap ,f :BLines<CR>
+nnoremap <S-k> {
+nnoremap <S-j> }
+
+nmap ,l :BLines<CR>
 nmap ,e :Files<CR>
 nmap ,g :GFiles<CR>
 
