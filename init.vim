@@ -18,8 +18,7 @@ call plug#end()
 
 set foldmethod=indent
 nnoremap <space> za
-vnoremap <space> zf
-vnoremap <C-space> zv
+vnoremap <C-Space> zA
 
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
