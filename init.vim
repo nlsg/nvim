@@ -39,9 +39,9 @@ nnoremap <S-j> :tabp<CR>
 nnoremap <C-k> {
 nnoremap <C-j> }
 
-nmap ,f :BLines
-nmap ,e :Files
-nmap ,g :GFiles
+nmap ,f :BLines<CR>
+nmap ,e :Files<CR>
+nmap ,g :GFiles<CR>
 
 nmap <C-t> :tabnew<CR>:term<Enter>i
 tmap <S-y> <C-\><C-n>
