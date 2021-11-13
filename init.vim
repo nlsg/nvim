@@ -34,10 +34,22 @@ let g:airline_theme='owo'
 
 nnoremap tt :tabnew 
 nnoremap <C-k> :tabn<CR>
-nnoremap <C-j> :tabp<CR>
+nnoremap <C-j> :tabp<CR> 
+inoremap <C-k> <Esc>:tabn<CR>
+inoremap <C-j> <Esc>:tabp<CR>
+tnoremap <C-k> <C-\><C-n>:tabn<CR>
+tnoremap <C-j> <C-\><C-n>:tabp<CR>
 
-tnoremap <C-k> :tabn<CR>
-tnoremap <C-j> :tabp<CR>
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+inoremap <C-h> <Esc><C-w>h
+inoremap <C-l> <Esc><C-w>l
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-l> <C-\><C-n><C-w>l
+
+
+tmap <C-k> <C-\><C-n>:tabn<CR>
+tmap <C-j> <C-\><C-n>:tabp<CR>
 
 nnoremap <S-k> {
 nnoremap <S-j> }
