@@ -1,0 +1,58 @@
+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,v
+nmap ,e :Files,V
+simple,v
+let g:airline_theme='simple',v
+Plug 'https://github.com/vim-airline/vim-airline',V
+Plug 'Plugin 'Plugin 'vim-airline/vim-airline-themes'',V
+https://github.com/edkolev/tmuxline.vim,v
+https://github.com/vim-airline/vim-airline,v
+F9,v
+ ,V
+set splitbelowset splitright,v
+!,v
+',v
+autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>,v
+vnoremap <space> zf,V
+Esc,v
+<,v
+>,v
+<C-\><C-n>,v
+let mapleader = ",",v
+nmap tt :tabnew ,V
+",V
+nnoremap <S-k> :tabn<CR>,V
+Enter,v
+CR,v
+For Commenting gcc & gc,v
+Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc,V
+https://github.com/junegunn/fzf.vim,v
+let g:jedi#rename_command = "<leader>r",V
+{,v
+nnoremap <C-k> {,V
+let g:jedi#goto_command = "<leader>d"let g:jedi#goto_assignments_command = "<leader>g"let g:jedi#goto_stubs_command = "<leader>s"let g:jedi#goto_definitions_command = ""let g:jedi#documentation_command = "K"let g:jedi#usages_command = "<leader>n"let g:jedi#completions_command = "<C-Space>"let g:jedi#rename_command = "<leader>r",v
+nnoremap <S-j> {,V
+Plug 'https://github.com/tmhedberg/SimpylFold',V
+set nocompatible,V
+set foldmethod=indentnnoremap <space> zavnoremap <space> zf,v
+https://github.com/tmhedberg/SimpylFold,v
+set relativnumbers,V
+set relativnumbersnmap tt :tabnew set clipboard=unnamedpluscall plug#begin() Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)Plug 'https://github.com/davidhalter/jedi-vim",V
+https://github.com/davidhalter/jedi-vim,v
+Plug 'https://github.com/preservim/nerdtree', { 'on': 'NERDTreeToggle' },V
+Plug 'tyru/open-browser.vim' " opens url in browser,V
+call plug#begin() Plug 'tyru/open-browser.vim' " opens url in browserPlug 'http://github.com/tpope/vim-surround' " Surrounding ysw)Plug 'https://github.com/preservim/nerdtree', { 'on': 'NERDTreeToggle' }Plug 'https://github.com/ap/vim-css-color' " CSS Color PreviewPlug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc call plug#end(),v
+",v
+"{ Header info" Description: This is my personal Nvim configuration supporting Mac, Linux" and Windows, with various plugins configured. This configuration evolves as" I learn more about Nvim and becomes more proficient in using Nvim. Since it" is very long (more than 1000 lines!), you should read it carefully and take" only the settings and options that suits you. I would not recommend cloning" this repo and replace your own config. Good configurations are personal," built over time with a lot of polish." Author: Jie-dong Hao" Email: jdhao@hotmail.com"}"{ Main configurationslet g:config_files = [      \ 'globals.vim',      \ 'options.vim',      \ 'autocommands.vim',      \ 'mappings.vim',      \ 'plugins.vim',      \ 'themes.vim'      \ ]for s:fname in g:config_files  execute printf('source %s/core/%s', stdpath('config'), s:fname)endforset relativnumbers,v
+e,v
+vim move between tabes,v
+:,v
+":,V
+:nmap tt :tabnew,V
+      \ 'custom.vim',V
+themes.vim,v
+      \ 'themes.vim',V
+source '$HOME/.config/nvim/custom.vim',V
+nnore,v
+nnoremap tt :tabnew,V
+~,v
+,V
