@@ -51,7 +51,6 @@ vnoremap <C-l> <Esc><C-w>l
 tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-l> <C-\><C-n><C-w>l
 
-
 tmap <C-k> <C-\><C-n>:tabn<CR>
 tmap <C-j> <C-\><C-n>:tabp<CR>
 
@@ -65,6 +64,9 @@ nmap ,g :GFiles<CR>
 nmap <C-t> :tabnew<CR>:term<Enter>i
 tmap <C-y> <C-\><C-n>
 "let mapleader = ","
+
+nnoremap % :%s/\<<C-r><C-w>\>//g<Left><Left>
+nnoremap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
 autocmd FileType python map <buffer> <C-x> :w<CR>:sp<CR>:terminal python3 -i %<CR>i
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:sp<CR>:terminal python3 -i %<CR>i
