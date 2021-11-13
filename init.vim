@@ -44,7 +44,7 @@ nmap ,e :Files<CR>
 nmap ,g :GFiles<CR>
 
 nmap <C-t> :tabnew<CR>:term<Enter>i
-tmap <S-y> <C-\><C-n>
+tmap <C-y> <C-\><C-n>
 "let mapleader = ","
 
 autocmd FileType python map <buffer> <C-x> :w<CR>:sp<CR>:terminal python3 -i %<CR>i
