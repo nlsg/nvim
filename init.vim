@@ -37,6 +37,8 @@ nnoremap <C-k> :tabn<CR>
 nnoremap <C-j> :tabp<CR> 
 inoremap <C-k> <Esc>:tabn<CR>
 inoremap <C-j> <Esc>:tabp<CR>
+vnoremap <C-k> <Esc>:tabn<CR>
+vnoremap <C-j> <Esc>:tabp<CR>
 tnoremap <C-k> <C-\><C-n>:tabn<CR>
 tnoremap <C-j> <C-\><C-n>:tabp<CR>
 
@@ -44,6 +46,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 inoremap <C-h> <Esc><C-w>h
 inoremap <C-l> <Esc><C-w>l
+vnoremap <C-h> <Esc><C-w>h
+vnoremap <C-l> <Esc><C-w>l
 tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-l> <C-\><C-n><C-w>l
 
