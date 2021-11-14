@@ -1,3 +1,6 @@
+"TODO
+"set encoding correct that umlaute can be used for mappings
+
 set number
 set relativenumber
 
@@ -52,20 +55,20 @@ inoremap <C-l> <Esc><C-w>l
 vnoremap <C-h> <Esc><C-w>h
 vnoremap <C-l> <Esc><C-w>l
 tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-l> <C-\><C-n><C-w>l
 nnoremap d<C-h> <C-w>h:q<CR>
 nnoremap d<C-l> <C-w>l:q<CR>
 nnoremap t<C-l> :vsp<CR>:term<CR>i
+nnoremap ö <C-w>l
 
 "navigation inside buffer
-nnoremap <S-k> {
-nnoremap <S-j> }
-nnoremap <S-l> {zz
-nnoremap <S-h> }zz
-vnoremap <S-k> {
-vnoremap <S-j> }
-vnoremap <S-l> {zz
-vnoremap <S-h> }zz
+nnoremap <S-k> (
+nnoremap <S-j> )
+nnoremap <S-l> (zz
+nnoremap <S-h> )zz
+vnoremap <S-k> (
+vnoremap <S-j> )
+vnoremap <S-l> (zz
+vnoremap <S-h> )zz
 
 "fzf-vim
 nmap ,l :BLines<CR>
@@ -87,7 +90,8 @@ nnoremap % :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
 "python specific
-autocmd FileType python map <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i %
+autocmd FileType python map <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i %  
 "<CR>i
-autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i %
+autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % 
 "<CR>i
+let @s = 'iself.'
