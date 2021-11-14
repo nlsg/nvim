@@ -56,6 +56,8 @@ tmap <C-j> <C-\><C-n>:tabp<CR>
 
 nnoremap <S-k> {
 nnoremap <S-j> }
+nnoremap <S-h> {zz
+nnoremap <S-l> }zz
 
 nmap ,l :BLines<CR>
 nmap ,e :Files<CR>
@@ -68,5 +70,7 @@ tmap <C-y> <C-\><C-n>
 nnoremap % :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
-autocmd FileType python map <buffer> <C-x> :w<CR>:sp<CR>:terminal python3 -i %<CR>i
-autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:sp<CR>:terminal python3 -i %<CR>i
+autocmd FileType python map <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i %
+"<CR>i
+autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i %
+"<CR>i
