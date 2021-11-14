@@ -17,10 +17,6 @@ Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 call plug#end()
 
-set foldmethod=indent
-nnoremap <space> za
-vnoremap <S-Space> zA
-
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_stubs_command = "<leader>s"
@@ -32,6 +28,12 @@ let g:jedi#rename_command = "<leader>r"
 
 let g:airline_theme='owo'
 
+"fold
+set foldmethod=indent
+nnoremap <space> za
+vnoremap <S-Space> zA
+
+"buffer navigation
 nnoremap tt :tabnew 
 nnoremap <C-k> :tabn<CR>
 nnoremap <C-j> :tabp<CR> 
@@ -42,6 +44,7 @@ vnoremap <C-j> <Esc>:tabp<CR>
 tnoremap <C-k> <C-\><C-n>:tabn<CR>
 tnoremap <C-j> <C-\><C-n>:tabp<CR>
 
+"window navigation 
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 inoremap <C-h> <Esc><C-w>h
@@ -50,26 +53,40 @@ vnoremap <C-h> <Esc><C-w>h
 vnoremap <C-l> <Esc><C-w>l
 tnoremap <C-h> <C-\><C-n><C-w>h
 tnoremap <C-l> <C-\><C-n><C-w>l
+nnoremap d<C-h> <C-w>h:q<CR>
+nnoremap d<C-l> <C-w>l:q<CR>
+nnoremap t<C-l> :vsp<CR>:term<CR>i
 
-tmap <C-k> <C-\><C-n>:tabn<CR>
-tmap <C-j> <C-\><C-n>:tabp<CR>
-
+"navigation inside buffer
 nnoremap <S-k> {
 nnoremap <S-j> }
-nnoremap <S-h> {zz
-nnoremap <S-l> }zz
+nnoremap <S-l> {zz
+nnoremap <S-h> }zz
+vnoremap <S-k> {
+vnoremap <S-j> }
+vnoremap <S-l> {zz
+vnoremap <S-h> }zz
 
+"fzf-vim
 nmap ,l :BLines<CR>
 nmap ,e :Files<CR>
 nmap ,g :GFiles<CR>
 
+"terminal
 nmap <C-t> :tabnew<CR>:term<Enter>i
 tmap <C-y> <C-\><C-n>
+tmap <C-x> <C-\><C-n>:q<CR>
 "let mapleader = ","
 
+"misc
+map <C-q> :q<CR>
+map <C-s> :w<CR>
+
+"find and replace
 nnoremap % :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
+"python specific
 autocmd FileType python map <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i %
 "<CR>i
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i %
