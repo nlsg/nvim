@@ -18,7 +18,10 @@ Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'https://github.com/junegunn/fzf.vim' " fzf 
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
+Plug 'https://github.com/tpope/vim-surround' " new surround(ys ..), ds.. ,cs.. 
 call plug#end()
+
+let mapleader = ","
 
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
@@ -30,6 +33,9 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 
 let g:airline_theme='owo'
+
+"spellcheck
+map <leader>o :setlocal spell! spelllang=en_us<CR>
 
 "fold
 set foldmethod=indent
@@ -79,7 +85,6 @@ nmap ,g :GFiles<CR>
 nmap <C-t> :tabnew<CR>:term<Enter>i
 tmap <C-y> <C-\><C-n>
 tmap <C-x> <C-\><C-n>:q<CR>
-"let mapleader = ","
 
 "misc
 map <C-q> :q<CR>
@@ -90,8 +95,6 @@ nnoremap % :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
 "python specific
-autocmd FileType python map <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i %  
-"<CR>i
-autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % 
-"<CR>i
+autocmd FileType python map <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
+autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 let @s = 'iself.'
