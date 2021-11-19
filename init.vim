@@ -1,6 +1,9 @@
 "TODO
 "set encoding correct that umlaute can be used for mappings
 
+set cursorline
+hi CursorLine term=bold cterm=bold
+
 set number
 set relativenumber
 
