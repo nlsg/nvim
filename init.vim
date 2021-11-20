@@ -1,5 +1,6 @@
 "TODO
 "set encoding correct that umlaute can be used for mappings
+"custom command syntax
 
 set cursorline
 hi CursorLine term=bold cterm=bold
@@ -8,9 +9,10 @@ set number
 set relativenumber
 
 set clipboard=unnamedplus
-syntax enable
 set splitbelow
 set splitright
+
+syntax enable
 
 call plug#begin()
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
@@ -86,6 +88,7 @@ nmap ,g :GFiles<CR>
 
 "terminal
 nmap <C-t> :tabnew<CR>:term<Enter>i
+
 tmap <C-y> <C-\><C-n>
 tmap <C-x> <C-\><C-n>:q<CR>
 
@@ -94,11 +97,14 @@ map <C-q> :q<CR>
 map <C-s> :w<CR>
 
 "find and replace
-nnoremap % :%s/\<<C-r><C-w>\>//g<Left><Left>
-nnoremap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
+nmap % :%s/\<<C-r><C-w>\>//g<Left><Left>
+nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
+
+"allways change dir to current buffer/window dir
+autocmd BufEnter * silent! lcd %:p:h
 
 "python specific
 autocmd FileType python map <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python map <buffer> <C-y> yy<C-l>pi<Enter>
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % <CR>i
-let @s = 'iself.'
+autocmd FileType python let @s = 'iself.'
