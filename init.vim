@@ -15,12 +15,11 @@ set splitright
 syntax enable
 
 call plug#begin()
-Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/davidhalter/jedi-vim'
 Plug 'https://github.com/tmhedberg/SimpylFold'
 Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
-Plug 'https://github.com/junegunn/fzf.vim' " fzf 
+Plug 'https://github.com/junegunn/fzf.vim' " fzf ,f ,e ,g ...
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 Plug 'https://github.com/tpope/vim-surround' " new surround(ys ..), ds.. ,cs.. 
@@ -95,6 +94,7 @@ tmap <C-x> <C-\><C-n>:q<CR>
 "misc
 map <C-q> :q<CR>
 map <C-s> :w<CR>
+map <C-f> /
 
 "find and replace
 nmap % :%s/\<<C-r><C-w>\>//g<Left><Left>
