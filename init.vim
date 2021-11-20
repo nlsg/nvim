@@ -92,8 +92,8 @@ tmap <C-y> <C-\><C-n>
 tmap <C-x> <C-\><C-n>:q<CR>
 
 "misc
+map <C-s> :w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 map <C-q> :q<CR>
-map <C-s> :w<CR>
 map <C-f> /
 
 "find and replace
@@ -105,6 +105,6 @@ autocmd BufEnter * silent! lcd %:p:h
 
 "python specific
 autocmd FileType python map <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
-autocmd FileType python map <buffer> <C-y> yy<C-l>pi<Enter>
+autocmd FileType python map <buffer> <C-y> yy<C-l><C-y>pi<Enter>i
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python2 -i % <CR>i
 autocmd FileType python let @s = 'iself.'
