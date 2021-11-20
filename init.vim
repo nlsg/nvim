@@ -106,5 +106,5 @@ autocmd BufEnter * silent! lcd %:p:h
 "python specific
 autocmd FileType python map <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python map <buffer> <C-y> yy<C-l>pi<Enter>
-autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % <CR>i
+autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python2 -i % <CR>i
 autocmd FileType python let @s = 'iself.'
