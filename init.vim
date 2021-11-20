@@ -134,7 +134,7 @@ autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i %
 autocmd FileType python nmap <buffer> <C-y> mm_y$<C-l><C-y>pi<Enter><C-h>Mm
 autocmd FileType python nmap <buffer> <C-c> y$<C-l><C-y>pi<Enter><C-h>j
 autocmd FileType python imap <buffer> <C-y> <Esc>mm_y$<C-l><C-y>pi<Enter><C-h>Mmi
-autocmd FileType python imap <buffer> <C-c> <Esc>y$<C-l><C-y>pi<Enter><C-h>j
+autocmd FileType python imap <buffer> <C-c> <Esc>y$<C-l><C-y>pi<Enter><C-h>o
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python2 -i % <CR>i
 autocmd FileType python let @s = 'iself.'
 autocmd FileType help wincmd L
