@@ -60,15 +60,15 @@ tmap <C-j> <C-\><C-n>:tabp<CR>
 
 "window navigation 
 nmap <C-h> <C-w>h
-nmap <C-l> <C-w>l
+nmap <C-l> <C-w>li
 imap <C-h> <Esc><C-w>h
-imap <C-l> <Esc><C-w>l
+imap <C-l> <Esc><C-w>li
 vmap <C-h> <Esc><C-w>h
-vmap <C-l> <Esc><C-w>l
+vmap <C-l> <Esc><C-w>li
 tmap <C-h> <C-\><C-n><C-w>h
 nmap d<C-h> <C-w>h:q<CR>
-nmap d<C-l> <C-w>l:q<CR>
-nmap t<C-l> :vsp<CR>:term<CR>i
+nmap d<C-l> <C-w>l:q<CR>i
+nmap t<C-l> :vsp<CR>:term<CR>ii
 nmap ö <C-w>l
 
 "navigation inside buffer
