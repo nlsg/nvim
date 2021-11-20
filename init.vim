@@ -22,10 +22,10 @@ call plug#end()
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_stubs_command = "<leader>s"
-let g:jedi#goto_definitions_command = ""
+let g:jedi#goto_definitions_command = "<leader>D"
 let g:jedi#documentation_command = "B"
 let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<C-Space>"
+let g:jedi#completions_command = "<leader><Space>"
 let g:jedi#rename_command = "<leader>r"
 
 let g:airline_theme='owo'
@@ -108,7 +108,11 @@ nmap <C-t> :tabnew<CR>:term<Enter>i
 tmap <C-y> <C-\><C-n>
 tmap <C-x> <C-\><C-n>:q<CR>
 
+"push.py
+nmap <leader>p t<c-l>push.py -m ""<Left><CR>
+""
 "misc
+nmap <leader>s :w<CR>:source<CR>
 nmap <C-s> :w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 nmap <C-q> :q<CR>
 nmap <C-f> /
@@ -126,8 +130,11 @@ nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
 "allways change dir to current buffer/window dir
 autocmd BufEnter * silent! lcd %:p:h
-autocmd FileType python map <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
-autocmd FileType python map <buffer> <C-y> yy<C-l><C-y>pi<Enter><C-h>
+autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
+autocmd FileType python nmap <buffer> <C-y> mm_y$<C-l><C-y>pi<Enter><C-h>Mm
+autocmd FileType python nmap <buffer> <C-c> y$<C-l><C-y>pi<Enter><C-h>j
+autocmd FileType python imap <buffer> <C-y> <Esc>mm_y$<C-l><C-y>pi<Enter><C-h>Mmi
+autocmd FileType python imap <buffer> <C-c> <Esc>y$<C-l><C-y>pi<Enter><C-h>j
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python2 -i % <CR>i
 autocmd FileType python let @s = 'iself.'
 autocmd FileType help wincmd L
