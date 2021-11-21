@@ -68,10 +68,16 @@ nmap <leader>o :setlocal spell! spelllang=en_us<CR>
 nmap <leader>c :Goyo<CR>:set cursorline<CR>:hi CursorLine term=bold cterm=bold<CR>
 nmap -g <leader>c
 
-"fold
+"folds
 set foldmethod=indent
-nnoremap <space> za
-vnoremap <S-Space> zA
+nmap -f za
+nmap -F zR
+
+"terminal
+nmap <C-t> :tabnew<CR>:term<Enter>i
+
+tmap <C-y> <C-\><C-n>
+tmap <C-x> <C-y>:q<CR>
 
 "buffer navigation
 nmap tt :tabnew ~/null<CR>,e
@@ -87,8 +93,11 @@ imap <C-h> <Esc><C-w>hi
 imap <C-l> <Esc><C-w>li
 imap <C-j> <Esc><C-w>ji
 imap <C-k> <Esc><C-w>kLi
+tmap <C-h> <C-y><C-w>hi
+tmap <C-l> <C-y><C-w>li
+tmap <C-j> <C-y><C-w>ji
+tmap <C-k> <C-y><C-w>ki
 
-tmap <C-h> <C-\><C-n><C-w>h
 nmap d<C-h> <C-w>h:q<CR>
 nmap d<C-l> <C-w>l:q<CR>
 nmap d<C-j> <C-w>j:q<CR>
@@ -102,8 +111,8 @@ nmap --<C-l> <C-w>L
 nmap --<C-j> <C-w>J
 nmap --<C-k> <C-w>K
 
-nmap -l :vsp<CR>,e
-nmap -j :sp<CR>,e
+nmap -l :cd ~<CR>:vsp<CR>,e
+nmap -j :ch ~<CR>:sp<CR>,e
 nmap --l :vsp<CR>:term<CR>i
 nmap --j :sp<CR>:term<CR>i
 
@@ -133,26 +142,20 @@ nmap ,g :GFiles<CR>
 
 nmap ,t :FloatermToggle<CR>
 
-"terminal
-nmap <C-t> :tabnew<CR>:term<Enter>i
-
-tmap <C-y> <C-\><C-n>
-tmap <C-x> <C-y>:q<CR>
-
 "push.py
-nmap <leader>p t<c-l>push.py -m ""<Left>
-nmap <leader><leader>p t<c-l>push.py<CR><C-d>
+nmap <leader>p --lpush.py -m ""<Left>
+nmap <leader><leader>p --lpush.py<CR><C-d>
 
 "misc
 nmap <leader>s :w<CR>:source<CR>
 nmap <C-s> :w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
+imap <C-s> <Esc>:w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 nmap <C-q> :q<CR>
 nmap <C-f> /
 nmap P o<Esc>p
 nmap -n nzz
 nmap -N Nzz
 nmap -s :wa<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>:qa<CR>
-imap <C-s> <Esc>:w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 imap <C-f> <Esc>/
 imap <C-x> <Esc>:wq<CR>
 
@@ -168,23 +171,18 @@ nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 "========
 autocmd BufEnter * silent! lcd %:p:h  "allways change dir to current buffer/window dir
 autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
-autocmd FileType python nmap <buffer> <C-y> mm_y$<C-l>pi<Enter><C-h>Mm
-autocmd FileType python nmap <buffer> <C-c> y$<C-l>pi<Enter><C-h>j
-autocmd FileType python imap <buffer> <C-y> <Esc>_y$<C-l><C-y>pi<Enter><C-h>o
-autocmd FileType python imap <buffer> <C-c> <Esc>y$<C-l><C-y>pi<Enter><C-h>o
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % <CR>i
-autocmd FileType python nmap <buffer> -j<C-y> mm_y$<C-j>pi<Enter><C-h>Mm
-autocmd FileType python nmap <buffer> -j<C-c> y$<C-j>pi<Enter><C-h>j
-autocmd FileType python imap <buffer> -j<C-y> <Esc>_y$<C-j><C-y>pi<Enter><C-h>o
-autocmd FileType python imap <buffer> -j<C-c> <Esc>y$<C-j><C-y>pi<Enter><C-h>o
-autocmd FileType python nmap <buffer> -k<C-y> mm_y$<C-k>pi<Enter><C-h>Mm
-autocmd FileType python nmap <buffer> -k<C-c> y$<C-k>pi<Enter><C-h>j
-autocmd FileType python imap <buffer> -k<C-y> <Esc>_y$<C-k><C-y>pi<Enter><C-h>o
-autocmd FileType python imap <buffer> -k<C-c> <Esc>y$<C-k><C-y>pi<Enter><C-h>o
-autocmd FileType python nmap <buffer> -l<C-y> mm_y$<C-l>pi<Enter><C-h>Mm
-autocmd FileType python nmap <buffer> -l<C-c> y$<C-l>pi<Enter><C-h>j
-autocmd FileType python imap <buffer> -l<C-y> <Esc>_y$<C-l><C-y>pi<Enter><C-h>o
-autocmd FileType python imap <buffer> -l<C-c> <Esc>y$<C-l><C-y>pi<Enter><C-h>o
+autocmd FileType python nmap <buffer> <C-y> mm_y$zb<C-j>pi<CR><C-k><esc>Mm
+autocmd FileType python nmap <buffer> <C-c> y$zb<C-j>pi<CR><C-k><esc>j
+autocmd FileType python imap <buffer> <C-y> <Esc>_y$zb<C-j><C-y>pi<CR><C-k><esc>o
+autocmd FileType python imap <buffer> <C-c> <Esc>y$zb<C-j><C-y>pi<CR><C-k><esc>o
+
 autocmd FileType python nmap <buffer> -j<C-x> :w<CR>:sp<CR>:terminal python3 -i % <CR>i
+autocmd FileType python nmap <buffer> -j<C-y> mm_y$<C-j>pi<Enter><C-k><esc>Mm
+autocmd FileType python nmap <buffer> -j<C-c> y$<C-j>pi<Enter><C-k><esc>j
+autocmd FileType python nmap <buffer> -k<C-y> mm_y$<C-k>pi<Enter><C-j><esc>Mm
+autocmd FileType python nmap <buffer> -k<C-c> y$<C-k>pi<Enter><C-j><esc>j
+autocmd FileType python nmap <buffer> -l<C-y> mm_y$<C-l><C-j>pi<Enter><C-h><esc>Mm
+autocmd FileType python nmap <buffer> -l<C-c> y$<C-l><C-j>pi<Enter><C-h><esc>j
 
 autocmd FileType help wincmd L
