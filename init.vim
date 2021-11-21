@@ -75,7 +75,7 @@ nmap <C-k> <C-w>k
 imap <C-h> <Esc><C-w>hi
 imap <C-l> <Esc><C-w>li
 imap <C-j> <Esc><C-w>ji
-imap <C-k> <Esc><C-w>ki
+imap <C-k> <Esc><C-w>kLi
 
 tmap <C-h> <C-\><C-n><C-w>h
 nmap d<C-h> <C-w>h:q<CR>
@@ -87,7 +87,6 @@ nmap c<C-l> <C-w>li
 nmap c<C-j> <C-w>ji
 nmap c<C-k> <C-w>ki
 nmap t<C-l> :vsp<CR>:term<CR>i
-nmap ö <C-w>l
 
 "navigation inside buffer
 nmap <S-k> {
@@ -116,7 +115,8 @@ tmap <C-y> <C-\><C-n>
 tmap <C-x> <C-\><C-n>:q<CR>
 
 "push.py
-nmap <leader>p t<c-l>push.py -m ""<Left><CR>
+nmap <leader>p t<c-l>push.py -m ""<Left>
+nmap <leader><leader>p t<c-l>push.py<CR>
 ""
 "misc
 nmap -n nzz
@@ -149,5 +149,4 @@ autocmd FileType python nmap <buffer> <C-c> y$<C-l><C-y>pi<Enter><C-h>j
 autocmd FileType python imap <buffer> <C-y> <Esc>_y$<C-l><C-y>pi<Enter><C-h>o
 autocmd FileType python imap <buffer> <C-c> <Esc>y$<C-l><C-y>pi<Enter><C-h>o
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python2 -i % <CR>i
-autocmd FileType python let @s = 'iself.'
 autocmd FileType help wincmd L
