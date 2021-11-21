@@ -116,8 +116,8 @@ tmap <C-x> <C-\><C-n>:q<CR>
 
 "push.py
 nmap <leader>p t<c-l>push.py -m ""<Left>
-nmap <leader><leader>p t<c-l>push.py<CR>
-""
+nmap <leader><leader>p t<c-l>push.py<CR><C-d>
+
 "misc
 nmap -n nzz
 nmap -N Nzz
