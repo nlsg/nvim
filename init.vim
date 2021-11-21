@@ -30,9 +30,6 @@ let g:jedi#rename_command = "<leader>r"
 
 let g:airline_theme='owo'
 
-"goyo - center text
-nmap <leader>c :Goyo<CR>:set cursorline<CR>:hi CursorLine term=bold cterm=bold<CR>
-
 "settings
 "========
 let mapleader = ","
@@ -53,7 +50,10 @@ set splitright
 nmap M `
 
 "spellcheck
-map <leader>o :setlocal spell! spelllang=en_us<CR>
+nmap <leader>o :setlocal spell! spelllang=en_us<CR>
+
+"goyo - center text
+nmap <leader>c :Goyo<CR>:set cursorline<CR>:hi CursorLine term=bold cterm=bold<CR>
 
 "fold
 set foldmethod=indent
@@ -61,7 +61,7 @@ nnoremap <space> za
 vnoremap <S-Space> zA
 
 "buffer navigation
-nmap tt :tabnew 
+nmap tt :tabnew ~/null<CR>,e
 nmap <C-k> :tabn<CR>
 nmap <C-j> :tabp<CR> 
 imap <C-k> <Esc>:tabn<CR>
@@ -125,6 +125,9 @@ nmap P o<Esc>p
 nmap % :%s/\<<C-r><C-w>\>//g<Left><Left>
 nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
+"macros
+"<C-r>q (in insert mode) to paste the macro stored in q
+
 "autocmds
 "========
 
@@ -133,7 +136,7 @@ autocmd BufEnter * silent! lcd %:p:h
 autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python nmap <buffer> <C-y> mm_y$<C-l><C-y>pi<Enter><C-h>Mm
 autocmd FileType python nmap <buffer> <C-c> y$<C-l><C-y>pi<Enter><C-h>j
-autocmd FileType python imap <buffer> <C-y> <Esc>mm_y$<C-l><C-y>pi<Enter><C-h>Mmi
+autocmd FileType python imap <buffer> <C-y> <Esc>_y$<C-l><C-y>pi<Enter><C-h>o
 autocmd FileType python imap <buffer> <C-c> <Esc>y$<C-l><C-y>pi<Enter><C-h>o
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python2 -i % <CR>i
 autocmd FileType python let @s = 'iself.'
