@@ -79,6 +79,8 @@ nmap <C-t> :tabnew<CR>:term<Enter>i
 tmap <C-y> <C-\><C-n>
 tmap <C-x> <C-y>:q<CR>
 
+"navigation
+"=========
 "buffer navigation
 nmap tt :tabnew ~/null<CR>,e
 nmap -<C-k> :tabn<CR>
@@ -111,8 +113,10 @@ nmap --<C-l> <C-w>L
 nmap --<C-j> <C-w>J
 nmap --<C-k> <C-w>K
 
-nmap -l :cd ~<CR>:vsp<CR>,e
-nmap -j :ch ~<CR>:sp<CR>,e
+nmap -L :cd ~<CR>:vsp<CR>,e
+nmap -J :ch ~<CR>:sp<CR>,e
+nmap -ll :vsp<CR>,e
+nmap -jj :sp<CR>,e
 nmap --l :vsp<CR>:term<CR>i
 nmap --j :sp<CR>:term<CR>i
 
@@ -147,11 +151,11 @@ nmap <leader>p --lpush.py -m ""<Left>
 nmap <leader><leader>p --lpush.py<CR><C-d>
 
 "misc
+"====
 nmap <leader>s :w<CR>:source<CR>
 nmap <C-s> :w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 imap <C-s> <Esc>:w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 nmap <C-q> :q<CR>
-nmap <C-f> /
 nmap P o<Esc>p
 nmap -n nzz
 nmap -N Nzz
@@ -159,23 +163,27 @@ nmap -s :wa<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>:qa<CR>
 imap <C-f> <Esc>/
 imap <C-x> <Esc>:wq<CR>
 
+"find and replace
+nmap % :%s/\<<C-r><C-w>\>//g<Left><Left>
+nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
+
+"shell
+"=====
+"translation
 nmap -le --ltrans -t en -s de <C-y>"0pi<CR><C-h>
 nmap -ld --ltrans -t de -s en <C-y>"0pi<CR><C-h>
 nmap -je --jtrans -t en -s de <C-y>"0pi<CR><C-k>
 nmap -jd --jtrans -t de -s en <C-y>"0pi<CR><C-k>
 
-"find and replace
-nmap % :%s/\<<C-r><C-w>\>//g<Left><Left>
-nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
-
 "registers and macros
 "<C-r>q (in insert mode) to paste the macro stored in q
 " "q to accesss register ie "qya
+"open goyo python session
+nmap <C-f> :tabnew /tmp/tmp.py<CR>-g-j<C-x><C-k> 
 
 "autocmds
 "========
 autocmd BufEnter * silent! lcd %:p:h  "allways change dir to current buffer/window dir
-autocmd FileType python nmap <buffer> <C-f> :tabnew /tmp/tmp.py<CR>-g-j<C-x><C-k>
 autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python nmap <buffer> <C-y> mm_y$zb<C-j>pi<CR><C-k><esc>Mm
