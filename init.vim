@@ -158,6 +158,8 @@ nmap -N Nzz
 nmap -s :wa<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>:qa<CR>
 imap <C-f> <Esc>/
 imap <C-x> <Esc>:wq<CR>
+nmap -te ,t<C-c>clear<CR>trans -t en -s de <C-y>"0pi<CR>
+nmap -td ,t<C-c>clear<CR>trans -t de -s en <C-y>"0pi<CR>
 
 "find and replace
 nmap % :%s/\<<C-r><C-w>\>//g<Left><Left>
@@ -170,6 +172,7 @@ nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 "autocmds
 "========
 autocmd BufEnter * silent! lcd %:p:h  "allways change dir to current buffer/window dir
+autocmd FileType python nmap <buffer> <C-f> :tabnew /tmp/tmp.py<CR>-g-j<C-x><C-k>
 autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python nmap <buffer> <C-y> mm_y$zb<C-j>pi<CR><C-k><esc>Mm
