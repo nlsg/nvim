@@ -33,8 +33,8 @@ let g:airline_theme='owo'
 "settings
 "========
 let mapleader = ","
-"2nd leader - and _
-nmap _ -
+"2nd leader - 
+
 set cursorline
 hi CursorLine term=bold cterm=bold
 
@@ -50,11 +50,17 @@ set splitright
 "move to marker
 nmap M `
 
+nmap ö "
+imap ö "
+vmap ö "
+tmap ö "
+
 "spellcheck
 nmap <leader>o :setlocal spell! spelllang=en_us<CR>
 
 "goyo - center text
 nmap <leader>c :Goyo<CR>:set cursorline<CR>:hi CursorLine term=bold cterm=bold<CR>
+nmap -g <leader>c
 
 "fold
 set foldmethod=indent
@@ -67,9 +73,8 @@ nmap -<C-k> :tabn<CR>
 nmap -<C-j> :tabp<CR> 
 
 "window navigation 
-nmap -<c-l> :vsp<CR>,e
 nmap <C-h> <C-w>h
-nmap <C-l> <C-w>li
+nmap <C-l> <C-w>l
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 imap <C-h> <Esc><C-w>hi
@@ -86,7 +91,21 @@ nmap c<C-h> <C-w>hi
 nmap c<C-l> <C-w>li
 nmap c<C-j> <C-w>ji
 nmap c<C-k> <C-w>ki
-nmap t<C-l> :vsp<CR>:term<CR>i
+nmap --<C-h> <C-w>H
+nmap --<C-l> <C-w>L
+nmap --<C-j> <C-w>J
+nmap --<C-k> <C-w>K
+
+nmap -l :vsp<CR>,e
+nmap -j :sp<CR>,e
+nmap --l :vsp<CR>:term<CR>i
+nmap --j :sp<CR>:term<CR>i
+
+"registers to resize splits
+let @h = "<"
+let @l = ">"
+let @j = "+"
+let @k = "-"
 
 "navigation inside buffer
 nmap <S-k> {
@@ -112,23 +131,24 @@ nmap ,t :FloatermToggle<CR>
 nmap <C-t> :tabnew<CR>:term<Enter>i
 
 tmap <C-y> <C-\><C-n>
-tmap <C-x> <C-\><C-n>:q<CR>
+tmap <C-x> <C-y>:q<CR>
 
 "push.py
 nmap <leader>p t<c-l>push.py -m ""<Left>
 nmap <leader><leader>p t<c-l>push.py<CR><C-d>
 
 "misc
-nmap -n nzz
-nmap -N Nzz
 nmap <leader>s :w<CR>:source<CR>
 nmap <C-s> :w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 nmap <C-q> :q<CR>
 nmap <C-f> /
+nmap P o<Esc>p
+nmap -n nzz
+nmap -N Nzz
+nmap -s :wa<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>:qa<CR>
 imap <C-s> <Esc>:w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 imap <C-f> <Esc>/
-
-nmap P o<Esc>p
+imap <C-x> <Esc>:wq<CR>
 
 "find and replace
 nmap % :%s/\<<C-r><C-w>\>//g<Left><Left>
@@ -140,13 +160,25 @@ nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
 "autocmds
 "========
-
-"allways change dir to current buffer/window dir
-autocmd BufEnter * silent! lcd %:p:h
+autocmd BufEnter * silent! lcd %:p:h  "allways change dir to current buffer/window dir
 autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
-autocmd FileType python nmap <buffer> <C-y> mm_y$<C-l><C-y>pi<Enter><C-h>Mm
-autocmd FileType python nmap <buffer> <C-c> y$<C-l><C-y>pi<Enter><C-h>j
+autocmd FileType python nmap <buffer> <C-y> mm_y$<C-l>pi<Enter><C-h>Mm
+autocmd FileType python nmap <buffer> <C-c> y$<C-l>pi<Enter><C-h>j
 autocmd FileType python imap <buffer> <C-y> <Esc>_y$<C-l><C-y>pi<Enter><C-h>o
 autocmd FileType python imap <buffer> <C-c> <Esc>y$<C-l><C-y>pi<Enter><C-h>o
-autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python2 -i % <CR>i
+autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % <CR>i
+autocmd FileType python nmap <buffer> -j<C-y> mm_y$<C-j>pi<Enter><C-h>Mm
+autocmd FileType python nmap <buffer> -j<C-c> y$<C-j>pi<Enter><C-h>j
+autocmd FileType python imap <buffer> -j<C-y> <Esc>_y$<C-j><C-y>pi<Enter><C-h>o
+autocmd FileType python imap <buffer> -j<C-c> <Esc>y$<C-j><C-y>pi<Enter><C-h>o
+autocmd FileType python nmap <buffer> -k<C-y> mm_y$<C-k>pi<Enter><C-h>Mm
+autocmd FileType python nmap <buffer> -k<C-c> y$<C-k>pi<Enter><C-h>j
+autocmd FileType python imap <buffer> -k<C-y> <Esc>_y$<C-k><C-y>pi<Enter><C-h>o
+autocmd FileType python imap <buffer> -k<C-c> <Esc>y$<C-k><C-y>pi<Enter><C-h>o
+autocmd FileType python nmap <buffer> -l<C-y> mm_y$<C-l>pi<Enter><C-h>Mm
+autocmd FileType python nmap <buffer> -l<C-c> y$<C-l>pi<Enter><C-h>j
+autocmd FileType python imap <buffer> -l<C-y> <Esc>_y$<C-l><C-y>pi<Enter><C-h>o
+autocmd FileType python imap <buffer> -l<C-c> <Esc>y$<C-l><C-y>pi<Enter><C-h>o
+autocmd FileType python nmap <buffer> -j<C-x> :w<CR>:sp<CR>:terminal python3 -i % <CR>i
+
 autocmd FileType help wincmd L
