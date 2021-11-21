@@ -49,11 +49,17 @@ set splitright
 "========
 "move to marker
 nmap M `
-
+"german keyboard layout optimisation
 nmap ö "
 imap ö "
 vmap ö "
 tmap ö "
+cmap ö "
+nmap ä @
+imap ä @
+vmap ä @
+tmap ä @
+cmap ä @
 
 "spellcheck
 nmap <leader>o :setlocal spell! spelllang=en_us<CR>
@@ -112,10 +118,10 @@ nmap <S-k> {
 nmap <S-j> }
 nmap <S-l> {zz
 nmap <S-h> }zz
-vmap <S-k> {
-vmap <S-j> }
-vmap <S-l> {zz
-vmap <S-h> }zz
+vmap <S-k> (
+vmap <S-j> )
+vmap <S-l> (zz
+vmap <S-h> )zz
 
 "visual
 vmap / y<Esc>/<C-r>0<CR>
