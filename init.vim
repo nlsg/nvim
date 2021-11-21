@@ -158,8 +158,11 @@ nmap -N Nzz
 nmap -s :wa<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>:qa<CR>
 imap <C-f> <Esc>/
 imap <C-x> <Esc>:wq<CR>
-nmap -te ,t<C-c>clear<CR>trans -t en -s de <C-y>"0pi<CR>
-nmap -td ,t<C-c>clear<CR>trans -t de -s en <C-y>"0pi<CR>
+
+nmap -le --ltrans -t en -s de <C-y>"0pi<CR><C-h>
+nmap -ld --ltrans -t de -s en <C-y>"0pi<CR><C-h>
+nmap -je --jtrans -t en -s de <C-y>"0pi<CR><C-k>
+nmap -jd --jtrans -t de -s en <C-y>"0pi<CR><C-k>
 
 "find and replace
 nmap % :%s/\<<C-r><C-w>\>//g<Left><Left>
