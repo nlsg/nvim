@@ -33,7 +33,8 @@ let g:airline_theme='owo'
 "settings
 "========
 let mapleader = ","
-
+"2nd leader - and _
+nmap _ -
 set cursorline
 hi CursorLine term=bold cterm=bold
 
@@ -62,26 +63,29 @@ vnoremap <S-Space> zA
 
 "buffer navigation
 nmap tt :tabnew ~/null<CR>,e
-nmap <C-k> :tabn<CR>
-nmap <C-j> :tabp<CR> 
-imap <C-k> <Esc>:tabn<CR>
-imap <C-j> <Esc>:tabp<CR>
-tmap <C-k> <C-\><C-n>:tabn<CR>
-tmap <C-j> <C-\><C-n>:tabp<CR>
+nmap -<C-k> :tabn<CR>
+nmap -<C-j> :tabp<CR> 
 
 "window navigation 
-nmap <leader><c-l> :vsp<CR>,e
+nmap -<c-l> :vsp<CR>,e
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>li
-imap <C-h> <Esc><C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+imap <C-h> <Esc><C-w>hi
 imap <C-l> <Esc><C-w>li
-nmap <C-S-h> <C-w>H
-nmap <C-S-l> <C-w>Li
-imap <C-S-h> <Esc><C-w>H
-imap <C-S-l> <Esc><C-w>Li
+imap <C-j> <Esc><C-w>ji
+imap <C-k> <Esc><C-w>ki
+
 tmap <C-h> <C-\><C-n><C-w>h
 nmap d<C-h> <C-w>h:q<CR>
-nmap d<C-l> <C-w>l:q<CR>i
+nmap d<C-l> <C-w>l:q<CR>
+nmap d<C-j> <C-w>j:q<CR>
+nmap d<C-k> <C-w>k:q<CR>
+nmap c<C-h> <C-w>hi
+nmap c<C-l> <C-w>li
+nmap c<C-j> <C-w>ji
+nmap c<C-k> <C-w>ki
 nmap t<C-l> :vsp<CR>:term<CR>i
 nmap ö <C-w>l
 
@@ -94,6 +98,9 @@ vmap <S-k> {
 vmap <S-j> }
 vmap <S-l> {zz
 vmap <S-h> }zz
+
+"visual
+vmap / y<Esc>/<C-r>0<CR>
 
 "fzf-vim
 nmap ,l :BLines<CR>
@@ -112,6 +119,8 @@ tmap <C-x> <C-\><C-n>:q<CR>
 nmap <leader>p t<c-l>push.py -m ""<Left><CR>
 ""
 "misc
+nmap -n nzz
+nmap -N Nzz
 nmap <leader>s :w<CR>:source<CR>
 nmap <C-s> :w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 nmap <C-q> :q<CR>
@@ -125,8 +134,9 @@ nmap P o<Esc>p
 nmap % :%s/\<<C-r><C-w>\>//g<Left><Left>
 nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
-"macros
+"registers and macros
 "<C-r>q (in insert mode) to paste the macro stored in q
+" "q to accesss register ie "qya
 
 "autocmds
 "========
