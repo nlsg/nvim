@@ -8,21 +8,6 @@ maybe view
 a minimalistic nvim setup
 =========================
  ```
- _______________________________________ 
-|Tabs___________________________________|                        |
-|Code               |Code               |
-|                   |                   |
-|                   |                   |
-|                   |                   |
-|                   |                   |
-|                   |-------------------|
-|                   |Shell/Interpreter  |
-|                   |                   |
-|                   |                   |
-|                   |                   |
-|                   |                   |
-|_______________________________________|
-
 ┌────────────────────────────────────────────────────────────┐
 │Tabs░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░│
 ├─────────────────────────────┬──────────────────────────────┤
@@ -46,10 +31,13 @@ a minimalistic nvim setup
 ╘═════════════════════════════╧══════════════════════════════╛
 
 ```
-Heading
-  # H1
-  ## H2
-  ### H3
+## **Keybindings**
+| Command | Type | Description |
+| ------- | ---- | ----------- |
+| Header | Title |
+| Paragraph | Text |
+
+
 Bold	**bold text**
 Italic	*italicized text*
 Blockquote	> blockquote
@@ -66,19 +54,8 @@ Horizontal Rule	---
 Link	[title](https://www.example.com)
 Image	![alt text](image.jpg)
 
-Table
-  | Syntax | Description |
-  | ----------- | ----------- |
-  | Header | Title |
-  | Paragraph | Text |
 Fenced Code Block
-  ```
-  {
-    "firstName": "John",
-    "lastName": "Smith",
-    "age": 25
-  }
-  ```
+
 Footnote	
   Here's a sentence with a footnote. [^1]
   [^1]: This is the footnote.

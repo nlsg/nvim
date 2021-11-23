@@ -11,7 +11,6 @@ Plug 'https://github.com/junegunn/goyo.vim'
 Plug 'https://github.com/voldikss/vim-floaterm'
 Plug 'https://github.com/davidhalter/jedi-vim'
 Plug 'https://github.com/tmhedberg/SimpylFold'
-Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'https://github.com/junegunn/fzf.vim' " fzf ,f ,e ,g ...
 Plug 'https://github.com/vim-airline/vim-airline'
@@ -167,23 +166,27 @@ imap <C-x> <Esc>:wq<CR>
 nmap % :%s/\<<C-r><C-w>\>//g<Left><Left>
 nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
-"shell
+":shell on a rock
 "=====
 "translation
-nmap -le --ltrans -t en -s de <C-y>"0pi<CR><C-h>
-nmap -ld --ltrans -t de -s en <C-y>"0pi<CR><C-h>
-nmap -je --jtrans -t en -s de <C-y>"0pi<CR><C-k>
-nmap -jd --jtrans -t de -s en <C-y>"0pi<CR><C-k>
+nmap -le --ltrans -t en -s de "<C-y>"0pi"<CR><C-h>
+nmap -ld --ltrans -t de -s en "<C-y>"0pi"<CR><C-h>
+nmap -je --jtrans -t en -s de "<C-y>"0pi"<CR><C-k>
+nmap -jd --jtrans -t de -s en "<C-y>"0pi"<CR><C-k>
 
 "registers and macros
 "<C-r>q (in insert mode) to paste the macro stored in q
-" "q to accesss register ie "qya
+" "q to accesss register ie "qyaw | "wy$ | "wp 
 "open goyo python session
-nmap <C-f> :tabnew /tmp/tmp.py<CR>-g-j<C-x><C-k> 
+nmap <C-g> :tabnew /tmp/tmp.py<CR>-g-j<C-x><C-k><esc>Go 
+
+command! -nargs=0 ABC +:vsp +:term +:set modifiable +:normal i 
+
 
 "autocmds
 "========
 autocmd BufEnter * silent! lcd %:p:h  "allways change dir to current buffer/window dir
+autocmd FileType python nmap <buffer> --g -g-j<C-x><C-k><esc>zz
 autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python nmap <buffer> <C-y> mm_y$zb<C-j>pi<CR><C-k><esc>Mm
