@@ -30,15 +30,15 @@ a minimalistic nvim setup
 ## **Keybindings**
 this nvim file introduces some new basic motions.
 
-| <C-[h,j,k,l]>  | point/switch to window/pane | left, lower, upper, right 
+| <C-[h,j,k,l]>  | point/switch to window/pane | left, lower, upper, right |
 | d<C-[h,j,k,l]> | delete pointing window/pane |
-| c<C-[h,j,k,l]> | change pointing window/pane | (goto and go to insert)
+| c<C-[h,j,k,l]> | change pointing window/pane | (goto and go to insert) |
 |  ------------- | --------------------------- |
-|  -<C-[j,k]>    | change buffer/tab | left, right
+|  -<C-[j,k]>    | change buffer/tab | left, right |
 |  ------------- | --------------------------- |
-| -[jj,ll]       | new pane   | lower(:sp), right(:vsp) fzf in current buffer directory
-| -[J,L]         | new pane   | lower(:sp), right(:vsp) fzf in home directory
-| --[j,l]        | new termin | lower(:sp), right(:vsp) fzf in current buffer directory
+| -[jj,ll]       | new pane   | lower(:sp), right(:vsp) fzf in current buffer directory |
+| -[J,L]         | new pane   | lower(:sp), right(:vsp) fzf in home directory |
+| --[j,l]        | new termin | lower(:sp), right(:vsp) fzf in current buffer directory |
 
 Italic	*italicized text*
 
