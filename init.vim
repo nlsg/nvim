@@ -114,8 +114,8 @@ nmap --<C-k> <C-w>K
 
 nmap -L :cd ~<CR>:vsp<CR>,e
 nmap -J :ch ~<CR>:sp<CR>,e
-nmap -ll :vsp<CR>,e
-nmap -jj :sp<CR>,e
+nmap -ll :cd %:p:h<CR>:vsp<CR>,e
+nmap -jj :cd %:p:h<CR>:sp<CR>,e
 nmap --l :vsp<CR>:term<CR>i
 nmap --j :sp<CR>:term<CR>i
 
@@ -179,9 +179,9 @@ nmap -jd --jtrans -t de -s en "<C-y>"0pi"<CR><C-k>
 " "q to accesss register ie "qyaw | "wy$ | "wp 
 "open goyo python session
 nmap <C-g> :tabnew /tmp/tmp.py<CR>-g-j<C-x><C-k><esc>Go 
+nmap -lg <C-x><C-y>:sp /tmp/tmp.py<CR><C-j>--<C-k><C-j>--<C-h><C-l>Ga
 
-command! -nargs=0 ABC +:vsp +:term +:set modifiable +:normal i 
-
+"command! -nargs=0 ABC +:vsp +:term +:set modifiable +:normal i 
 
 "autocmds
 "========
