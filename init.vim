@@ -5,7 +5,6 @@
 syntax enable
 "plugins
 "=======
-
 call plug#begin()
 Plug 'https://github.com/junegunn/goyo.vim'
 Plug 'https://github.com/voldikss/vim-floaterm'
@@ -46,8 +45,10 @@ set splitright
 
 "mappings
 "========
+
 "move to marker
 nmap M `
+
 "german keyboard layout optimisation
 nmap ö "
 imap ö "
@@ -82,22 +83,22 @@ tmap <C-x> <C-y>:q<CR>
 "=========
 "buffer navigation
 nmap tt :tabnew ~/null<CR>,e
-nmap -<C-k> :tabn<CR>
-nmap -<C-j> :tabp<CR> 
+nmap -<C-k> <C-h>:tabn<CR>
+nmap -<C-j> <C-h>:tabp<CR> 
 
 "window navigation 
-nmap <C-h> <C-w>h
+nmap <C-h> <C-w>h>
 nmap <C-l> <C-w>l
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 imap <C-h> <Esc><C-w>hi
 imap <C-l> <Esc><C-w>li
 imap <C-j> <Esc><C-w>ji
-imap <C-k> <Esc><C-w>kLi
-tmap <C-h> <C-y><C-w>hi
-tmap <C-l> <C-y><C-w>li
-tmap <C-j> <C-y><C-w>ji
-tmap <C-k> <C-y><C-w>ki
+imap <C-k> <Esc><C-w>ki
+tmap <C-h> <C-y><C-w>h
+tmap <C-l> <C-y><C-w>l
+tmap <C-j> <C-y><C-w>j
+tmap <C-k> <C-y><C-w>k
 
 nmap d<C-h> <C-w>h:q<CR>
 nmap d<C-l> <C-w>l:q<CR>
@@ -150,7 +151,6 @@ nmap <leader>p --lpush.py -m ""<Left>
 nmap <leader><leader>p --lpush.py<CR><C-d>
 
 "misc
-"====
 nmap <leader>s :w<CR>:source<CR>
 nmap <C-s> :w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 imap <C-s> <Esc>:w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
@@ -166,8 +166,6 @@ imap <C-x> <Esc>:wq<CR>
 nmap % :%s/\<<C-r><C-w>\>//g<Left><Left>
 nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
-":shell on a rock
-"=====
 "translation
 nmap -le --ltrans -t en -s de "<C-y>"0pi"<CR><C-h>
 nmap -ld --ltrans -t de -s en "<C-y>"0pi"<CR><C-h>
@@ -179,7 +177,6 @@ nmap -jd --jtrans -t de -s en "<C-y>"0pi"<CR><C-k>
 " "q to accesss register ie "qyaw | "wy$ | "wp 
 "open goyo python session
 nmap <C-g> :tabnew /tmp/tmp.py<CR>-g-j<C-x><C-k><esc>Go 
-nmap -lg <C-x><C-y>:sp /tmp/tmp.py<CR><C-j>--<C-k><C-j>--<C-h><C-l>Ga
 
 "command! -nargs=0 ABC +:vsp +:term +:set modifiable +:normal i 
 
@@ -191,8 +188,10 @@ autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i %
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python nmap <buffer> <C-y> mm_y$zb<C-j>pi<CR><C-k><esc>Mm
 autocmd FileType python nmap <buffer> <C-c> y$zb<C-j>pi<CR><C-k><esc>j
-autocmd FileType python imap <buffer> <C-y> <Esc>_y$zb<C-j><C-y>pi<CR><C-k><esc>o
+autocmd FileType python imap <buffer> <C-y> <Esc>mm_y$zb<C-j><C-y>pi<CR><C-k><esc>Mm
 autocmd FileType python imap <buffer> <C-c> <Esc>y$zb<C-j><C-y>pi<CR><C-k><esc>o
+
+autocmd FileType python nmap <buffer> -lg <C-x><C-y>:sp /tmp/tmp.py<CR><C-j>--<C-k><C-j>--<C-h><C-l>
 
 autocmd FileType python nmap <buffer> -j<C-x> :w<CR>:sp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python nmap <buffer> -j<C-y> mm_y$<C-j>pi<Enter><C-k><esc>Mm

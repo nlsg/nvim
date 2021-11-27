@@ -1,8 +1,9 @@
 # nvim
 
-a minimalistic nvim setup
+##a minimalistic nvim setup
 =========================
-
+it is optimized for quertz-keyboards,
+and python development
  ```
 ┌────────────────────────────────────────────────────────────┐
 │Tabs░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░│
@@ -36,6 +37,7 @@ this nvim file introduces some new basic motions.
 |  ------------- | --------------------------- |
 |  -<C-[j,k]>    | change buffer/tab | left, right |
 |  ------------- | --------------------------- |
+---
 | -[jj,ll]       | new pane   | lower(:sp), right(:vsp) fzf in current buffer directory |
 | -[J,L]         | new pane   | lower(:sp), right(:vsp) fzf in home directory |
 | --[j,l]        | new termin | lower(:sp), right(:vsp) fzf in current buffer directory |
