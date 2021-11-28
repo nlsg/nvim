@@ -188,10 +188,10 @@ autocmd BufEnter * silent! lcd %:p:h  "allways change dir to current buffer/wind
 autocmd FileType python nmap <buffer> <leader><leader>g <leader>g-j<C-x><C-k><esc>zz
 autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % <CR>i
-autocmd FileType python nmap <buffer> <C-y> mm_y$zb<C-j>pi<CR><C-k><esc>Mm
-autocmd FileType python nmap <buffer> <C-c> y$zb<C-j>pi<CR><C-k><esc>j
-autocmd FileType python imap <buffer> <C-y> <Esc>mm_y$zb<C-j><C-y>pi<CR><C-k><esc>Mmli
-autocmd FileType python imap <buffer> <C-c> <Esc>y$zb<C-j><C-y>pi<CR><C-k><esc>o
+autocmd FileType python nmap <buffer> <C-y> mm_y$zb<C-l><C-j>pi<CR><C-k><esc>Mm
+autocmd FileType python nmap <buffer> <C-c> y$zb<C-l><C-j>pi<CR><C-k><esc>j
+autocmd FileType python imap <buffer> <C-y> <Esc>mm_y$zb<C-l><C-j><C-y>pi<CR><C-k><esc>Mmli
+autocmd FileType python imap <buffer> <C-c> <Esc>y$zb<C-l><C-j><C-y>pi<CR><C-k><esc>o
 
 autocmd FileType python nmap <buffer> <leader>lg <C-x><C-y>:sp /tmp/tmp.py<CR><C-j>--<C-k><C-j>--<C-h><C-l>
 
