@@ -64,11 +64,11 @@ tmap ä @
 cmap ä @
 
 "spellcheck
-nmap ,o :setlocal spell! spelllang=en_us<CR>
+nmap <leader>o :setlocal spell! spelllang=en_us<CR>
 
 "goyo - center text
-nmap ,c :Goyo<CR>:set cursorline<CR>:hi CursorLine term=bold cterm=bold<CR>
-nmap <leader>g ,c
+nmap <leader>g :Goyo<CR>:set cursorline<CR>:hi CursorLine term=bold cterm=bold<CR>
+ 
 
 "folds
 set foldmethod=indent
@@ -149,7 +149,7 @@ nmap ,g :GFiles<CR>
 nmap ,t :FloatermToggle<CR>
 
 "push.py
-map <leader>p <leader><leader>lpush.py -m ""<Left>
+nmap <leader>p <leader><leader>lpush.py -m ""<Left>
 nmap <leader><leader>p <leader><leader>lpush.py<CR>
 
 "misc
