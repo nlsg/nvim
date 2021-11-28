@@ -150,7 +150,7 @@ nmap ,t :FloatermToggle<CR>
 
 "push.py
 map <leader>p <leader><leader>lpush.py -m ""<Left>
-nmap <leader><leader>p <leader><leader>lpush.py<CR><C-d>
+nmap <leader><leader>p <leader><leader>lpush.py<CR><C-d><C-d>
 
 "misc
 nmap ,s :w<CR>:source<CR>
