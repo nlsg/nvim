@@ -176,7 +176,11 @@ nmap <leader>ld <leader><leader>ltrans -t de -s en "<C-y>"0pi"<CR><C-h>
 nmap <leader>je <leader><leader>jtrans -t en -s de "<C-y>"0pi"<CR><C-k>
 nmap <leader>jd <leader><leader>jtrans -t de -s en "<C-y>"0pi"<CR><C-k>
 
-"registers and macros
+"links [s]earch
+nmap <leader>ls <leader><leader>llinks https://duckduckgo.com/?q=<C-y>"0pi<CR>
+nmap <leader>js <leader><leader>jlinks https://duckduckgo.com/?q=<C-y>"0pi<CR>
+
+"  jisters and macros
 "<C-r>q (in insert mode) to paste the macro stored in q
 " "q to accesss register ie "qyaw | "wy$ | "wp 
 "open goyo python session
