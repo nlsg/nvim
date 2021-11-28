@@ -149,8 +149,8 @@ nmap ,g :GFiles<CR>
 nmap ,t :FloatermToggle<CR>
 
 "push.py
-nmap ,p <leader><leader>lpush.py -m ""<Left>
-nmap ,,p <leader><leader>lpush.py<CR><C-d>
+map <leader>p <leader><leader>lpush.py -m ""<Left>
+nmap <leader><leader>p <leader><leader>lpush.py<CR><C-d>
 
 "misc
 nmap ,s :w<CR>:source<CR>
