@@ -178,7 +178,7 @@ nmap <leader>jd <leader><leader>jtrans -t de -s en "<C-y>"0pi"<CR><C-k>
 "<C-r>q (in insert mode) to paste the macro stored in q
 " "q to accesss register ie "qyaw | "wy$ | "wp 
 "open goyo python session
-nmap <C-g> :tabnew /tmp/tmp.py<CR>-g-j<C-x><C-k><esc>Go 
+nmap <C-g> :tabnew /tmp/tmp.py<CR><leader>g-j<C-x><C-k><esc>Go 
 
 "command! -nargs=0 ABC +:vsp +:term +:set modifiable +:normal i 
 
