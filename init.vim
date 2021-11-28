@@ -6,8 +6,9 @@ syntax enable
 "plugins
 "=======
 call plug#begin()
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
 Plug 'https://github.com/junegunn/goyo.vim'
-Plug 'https://github.com/voldikss/vim-floaterm'
 Plug 'https://github.com/davidhalter/jedi-vim'
 Plug 'https://github.com/tmhedberg/SimpylFold'
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
@@ -121,6 +122,9 @@ nmap <leader>ll :cd %:p:h<CR>:vsp<CR>,e
 nmap <leader>jj :cd %:p:h<CR>:sp<CR>,e
 nmap <leader><leader>l :vsp<CR>:term<CR>i
 nmap <leader><leader>j :sp<CR>:term<CR>i
+nmap <leader>lr :vsp<CR>:Ranger<CR>
+nmap <leader>jr :sp<CR>:Ranger<CR>
+
 
 "registers to resize splits
 let @h = "<"
@@ -146,11 +150,9 @@ nmap ,l :BLines<CR>
 nmap ,e :Files<CR>
 nmap ,g :GFiles<CR>
 
-nmap ,t :FloatermToggle<CR>
-
 "push.py
-nmap <leader>p <leader><leader>lpush.py -m ""<Left>
-nmap <leader><leader>p <leader><leader>lpush.py<CR>
+nmap <leader>p :w<CR><leader><leader>lpush.py -m ""<Left>
+nmap <leader><leader>p :w<CR><leader><leader>lpush.py<CR>
 
 "misc
 nmap ,s :w<CR>:source<CR>
