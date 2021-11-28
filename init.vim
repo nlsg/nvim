@@ -18,10 +18,8 @@ Plug 'https://github.com/vim-airline/vim-airline-themes'
 Plug 'https://github.com/tpope/vim-surround' " new surround(ys ..), ds.. ,cs.. 
 call plug#end()
 
-let mapleader = ","
-
 let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_assignments_command = "<leader>a"
 let g:jedi#goto_stubs_command = "<leader>s"
 let g:jedi#goto_definitions_command = "<leader>D"
 let g:jedi#documentation_command = "B"
@@ -85,7 +83,7 @@ tmap <C-x> <C-y>:q<CR>
 "navigation
 "=========
 "buffer navigation
-nmap tt :tabnew ~/null<CR>,e
+nmap tt :tabnew ~/null<CR>:Ranger<CR>
 nmap <leader><C-k> <C-h>:tabn<CR>
 nmap <leader><C-j> <C-h>:tabp<CR> 
 
@@ -116,8 +114,8 @@ nmap <leader><leader><C-l> <C-w>L
 nmap <leader><leader><C-j> <C-w>J
 nmap <leader><leader><C-k> <C-w>K
 
-nmap <leader>L :cd ~<CR>:vsp<CR>,e
-nmap <leader>J :ch ~<CR>:sp<CR>,e
+nmap <leader>lh :cd ~<CR>:vsp<CR>,e
+nmap <leader>jh :ch ~<CR>:sp<CR>,e
 nmap <leader>ll :cd %:p:h<CR>:vsp<CR>,e
 nmap <leader>jj :cd %:p:h<CR>:sp<CR>,e
 nmap <leader><leader>l :vsp<CR>:term<CR>i
@@ -206,3 +204,6 @@ autocmd FileType python nmap <buffer> <leader>l<C-y> mm_y$<C-l><C-j>pi<Enter><C-
 autocmd FileType python nmap <buffer> <leader>l<C-c> y$<C-l><C-j>pi<Enter><C-h><esc>j
 
 autocmd FileType help wincmd L
+
+
+
