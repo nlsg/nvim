@@ -17,21 +17,23 @@ Plug 'https://github.com/vim-airline/vim-airline-themes'
 Plug 'https://github.com/tpope/vim-surround' " new surround(ys ..), ds.. ,cs.. 
 call plug#end()
 
+let mapleader = ","
+
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_stubs_command = "<leader>s"
 let g:jedi#goto_definitions_command = "<leader>D"
 let g:jedi#documentation_command = "B"
 let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<leader><Space>"
+let g:jedi#completions_command = "<leader><Space><Space>"
 let g:jedi#rename_command = "<leader>r"
 
 let g:airline_theme='owo'
 
 "settings
 "========
-let mapleader = ","
-"2nd leader - 
+let mapleader = " "
+"2nd leader , 
 
 set cursorline
 hi CursorLine term=bold cterm=bold
@@ -62,16 +64,16 @@ tmap ä @
 cmap ä @
 
 "spellcheck
-nmap <leader>o :setlocal spell! spelllang=en_us<CR>
+nmap ,o :setlocal spell! spelllang=en_us<CR>
 
 "goyo - center text
-nmap <leader>c :Goyo<CR>:set cursorline<CR>:hi CursorLine term=bold cterm=bold<CR>
-nmap -g <leader>c
+nmap ,c :Goyo<CR>:set cursorline<CR>:hi CursorLine term=bold cterm=bold<CR>
+nmap <leader>g ,c
 
 "folds
 set foldmethod=indent
-nmap -f za
-nmap -F zR
+nmap <leader>f za
+nmap <leader>F zR
 
 "terminal
 nmap <C-t> :tabnew<CR>:term<Enter>i
@@ -83,11 +85,11 @@ tmap <C-x> <C-y>:q<CR>
 "=========
 "buffer navigation
 nmap tt :tabnew ~/null<CR>,e
-nmap -<C-k> <C-h>:tabn<CR>
-nmap -<C-j> <C-h>:tabp<CR> 
+nmap <leader><C-k> <C-h>:tabn<CR>
+nmap <leader><C-j> <C-h>:tabp<CR> 
 
 "window navigation 
-nmap <C-h> <C-w>h>
+nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
@@ -108,17 +110,17 @@ nmap c<C-h> <C-w>hi
 nmap c<C-l> <C-w>li
 nmap c<C-j> <C-w>ji
 nmap c<C-k> <C-w>ki
-nmap --<C-h> <C-w>H
-nmap --<C-l> <C-w>L
-nmap --<C-j> <C-w>J
-nmap --<C-k> <C-w>K
+nmap <leader><leader><C-h> <C-w>H
+nmap <leader><leader><C-l> <C-w>L
+nmap <leader><leader><C-j> <C-w>J
+nmap <leader><leader><C-k> <C-w>K
 
-nmap -L :cd ~<CR>:vsp<CR>,e
-nmap -J :ch ~<CR>:sp<CR>,e
-nmap -ll :cd %:p:h<CR>:vsp<CR>,e
-nmap -jj :cd %:p:h<CR>:sp<CR>,e
-nmap --l :vsp<CR>:term<CR>i
-nmap --j :sp<CR>:term<CR>i
+nmap <leader>L :cd ~<CR>:vsp<CR>,e
+nmap <leader>J :ch ~<CR>:sp<CR>,e
+nmap <leader>ll :cd %:p:h<CR>:vsp<CR>,e
+nmap <leader>jj :cd %:p:h<CR>:sp<CR>,e
+nmap <leader><leader>l :vsp<CR>:term<CR>i
+nmap <leader><leader>j :sp<CR>:term<CR>i
 
 "registers to resize splits
 let @h = "<"
@@ -147,18 +149,18 @@ nmap ,g :GFiles<CR>
 nmap ,t :FloatermToggle<CR>
 
 "push.py
-nmap <leader>p --lpush.py -m ""<Left>
-nmap <leader><leader>p --lpush.py<CR><C-d>
+nmap ,p <leader><leader>lpush.py -m ""<Left>
+nmap ,,p <leader><leader>lpush.py<CR><C-d>
 
 "misc
-nmap <leader>s :w<CR>:source<CR>
+nmap ,s :w<CR>:source<CR>
 nmap <C-s> :w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 imap <C-s> <Esc>:w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 nmap <C-q> :q<CR>
 nmap P o<Esc>p
-nmap -n nzz
-nmap -N Nzz
-nmap -s :wa<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>:qa<CR>
+nmap <leader>n nzz
+nmap <leader>N Nzz
+nmap <leader>s :wa<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>:qa<CR>
 imap <C-f> <Esc>/
 imap <C-x> <Esc>:wq<CR>
 
@@ -167,10 +169,10 @@ nmap % :%s/\<<C-r><C-w>\>//g<Left><Left>
 nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
 "translation
-nmap -le --ltrans -t en -s de "<C-y>"0pi"<CR><C-h>
-nmap -ld --ltrans -t de -s en "<C-y>"0pi"<CR><C-h>
-nmap -je --jtrans -t en -s de "<C-y>"0pi"<CR><C-k>
-nmap -jd --jtrans -t de -s en "<C-y>"0pi"<CR><C-k>
+nmap <leader>le <leader><leader>ltrans -t en -s de "<C-y>"0pi"<CR><C-h>
+nmap <leader>ld <leader><leader>ltrans -t de -s en "<C-y>"0pi"<CR><C-h>
+nmap <leader>je <leader><leader>jtrans -t en -s de "<C-y>"0pi"<CR><C-k>
+nmap <leader>jd <leader><leader>jtrans -t de -s en "<C-y>"0pi"<CR><C-k>
 
 "registers and macros
 "<C-r>q (in insert mode) to paste the macro stored in q
@@ -183,22 +185,22 @@ nmap <C-g> :tabnew /tmp/tmp.py<CR>-g-j<C-x><C-k><esc>Go
 "autocmds
 "========
 autocmd BufEnter * silent! lcd %:p:h  "allways change dir to current buffer/window dir
-autocmd FileType python nmap <buffer> --g -g-j<C-x><C-k><esc>zz
+autocmd FileType python nmap <buffer> <leader><leader>g <leader>g-j<C-x><C-k><esc>zz
 autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python nmap <buffer> <C-y> mm_y$zb<C-j>pi<CR><C-k><esc>Mm
 autocmd FileType python nmap <buffer> <C-c> y$zb<C-j>pi<CR><C-k><esc>j
-autocmd FileType python imap <buffer> <C-y> <Esc>mm_y$zb<C-j><C-y>pi<CR><C-k><esc>Mm
+autocmd FileType python imap <buffer> <C-y> <Esc>mm_y$zb<C-j><C-y>pi<CR><C-k><esc>Mmli
 autocmd FileType python imap <buffer> <C-c> <Esc>y$zb<C-j><C-y>pi<CR><C-k><esc>o
 
-autocmd FileType python nmap <buffer> -lg <C-x><C-y>:sp /tmp/tmp.py<CR><C-j>--<C-k><C-j>--<C-h><C-l>
+autocmd FileType python nmap <buffer> <leader>lg <C-x><C-y>:sp /tmp/tmp.py<CR><C-j>--<C-k><C-j>--<C-h><C-l>
 
-autocmd FileType python nmap <buffer> -j<C-x> :w<CR>:sp<CR>:terminal python3 -i % <CR>i
-autocmd FileType python nmap <buffer> -j<C-y> mm_y$<C-j>pi<Enter><C-k><esc>Mm
-autocmd FileType python nmap <buffer> -j<C-c> y$<C-j>pi<Enter><C-k><esc>j
-autocmd FileType python nmap <buffer> -k<C-y> mm_y$<C-k>pi<Enter><C-j><esc>Mm
-autocmd FileType python nmap <buffer> -k<C-c> y$<C-k>pi<Enter><C-j><esc>j
-autocmd FileType python nmap <buffer> -l<C-y> mm_y$<C-l><C-j>pi<Enter><C-h><esc>Mm
-autocmd FileType python nmap <buffer> -l<C-c> y$<C-l><C-j>pi<Enter><C-h><esc>j
+autocmd FileType python nmap <buffer> <leader>j<C-x> :w<CR>:sp<CR>:terminal python3 -i % <CR>i
+autocmd FileType python nmap <buffer> <leader>j<C-y> mm_y$<C-j>pi<Enter><C-k><esc>Mm
+autocmd FileType python nmap <buffer> <leader>j<C-c> y$<C-j>pi<Enter><C-k><esc>j
+autocmd FileType python nmap <buffer> <leader>k<C-y> mm_y$<C-k>pi<Enter><C-j><esc>Mm
+autocmd FileType python nmap <buffer> <leader>k<C-c> y$<C-k>pi<Enter><C-j><esc>j
+autocmd FileType python nmap <buffer> <leader>l<C-y> mm_y$<C-l><C-j>pi<Enter><C-h><esc>Mm
+autocmd FileType python nmap <buffer> <leader>l<C-c> y$<C-l><C-j>pi<Enter><C-h><esc>j
 
 autocmd FileType help wincmd L
