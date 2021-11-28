@@ -27,6 +27,8 @@ let g:jedi#usages_command = "<C-p>n"
 let g:jedi#completions_command = "<C-p><Space>"
 let g:jedi#rename_command = "<C-p>r"
 
+let g:ranger_map_keys = 0
+
 let g:airline_theme='owo'
 
 "settings
