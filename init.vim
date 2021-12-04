@@ -150,8 +150,8 @@ vmap <S-h> )zz
 vmap / y<Esc>/<C-r>0<CR>
 
 "fzf-vim
-nmap ,l :BLines<CR>
-nmap ,e :Files<CR>
+nmap <leader>$ :BLines<CR>
+nmap <leader>e :Files<CR>
 nmap ,g :GFiles<CR>
 
 "push.py
