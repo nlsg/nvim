@@ -70,6 +70,8 @@ nmap <leader>o :setlocal spell! spelllang=en_us<CR>
 "goyo - center text
 nmap <leader>g :Goyo<CR>:set cursorline<CR>:hi CursorLine term=bold cterm=bold<CR>
  
+"delete line backwards
+nmap d_ v_d
 
 "folds
 set foldmethod=indent
@@ -88,6 +90,8 @@ tmap <C-x> <C-y>:q<CR>
 nmap tt :tabnew ~/null<CR>:Ranger<CR>
 nmap <leader><C-k> <C-h>:tabn<CR>
 nmap <leader><C-j> <C-h>:tabp<CR> 
+nmap <leader><C-l> <C-h>:tabmove +1<CR>
+nmap <leader><C-h> <C-h>:tabmove -1<CR> 
 
 "window navigation 
 nmap <C-h> <C-w>h
@@ -155,6 +159,7 @@ nmap <leader>p :w<CR><leader><leader>lpush.py -m ""<Left>
 nmap <leader><leader>p :w<CR><leader><leader>lpush.py<CR>
 
 "misc
+nmap U <C-r>
 nmap ,s :w<CR>:source<CR>
 nmap <C-s> :w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 imap <C-s> <Esc>:w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
@@ -179,6 +184,8 @@ nmap <leader>jd <leader><leader>jtrans -t de -s en "<C-y>""pi"<CR><C-k>
 "links [s]earch
 nmap <leader>ls <leader><leader>lvimlinks.py <C-y>""pi<CR>
 nmap <leader>js <leader><leader>jvimlinks.py <C-y>""pi<CR>
+vmap <leader>ls y<leader><leader>lvimlinks.py <C-y>""pi<CR>
+vmap <leader>js y<leader><leader>jvimlinks.py <C-y>""pi<CR>
 
 "  jisters and macros
 "<C-r>q (in insert mode) to paste the macro stored in q
@@ -189,17 +196,25 @@ nmap <C-g> :tabnew /tmp/tmp.py<CR><leader>g-j<C-x><C-k><esc>Go
 
 "command! -nargs=0 ABC +:vsp +:term +:set modifiable +:normal i 
 
+"paste to interpreter/shell
+nmap <C-y> mm_y$zb<C-l><C-j>pi<CR><C-h><esc>Mm
+nmap <C-c> y$zb<C-l><C-j>pi<CR><C-h><esc>j
+imap <C-y> <Esc>_y$zb<C-l><C-j><C-y>pi<CR><C-h><esc>o
+imap <C-c> <Esc>y$zb<C-l><C-j><C-y>pi<CR><C-h><esc>o
+vmap <C-c> y$zb<C-l><C-j>pi<CR><C-h><esc>j
+
+vmap ^ <C-c>
+nmap ^ <C-c>
+nmap ¨ <C-y>
+nmap ! <C-x>
+
 "autocmds
 "========
+
 autocmd BufEnter * silent! lcd %:p:h  "allways change dir to current buffer/window dir
 autocmd FileType python nmap <buffer> <leader><leader>g <leader>g-j<C-x><C-k><esc>zz
 autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % <CR>i
-autocmd FileType python nmap <buffer> <C-y> mm_y$zb<C-l><C-j>pi<CR><C-h><esc>Mm
-autocmd FileType python nmap <buffer> <C-c> y$zb<C-l><C-j>pi<CR><C-h><esc>j
-autocmd FileType python imap <buffer> <C-y> <Esc>mm_y$zb<C-l><C-j><C-y>pi<CR><C-h><esc>Mmli
-autocmd FileType python imap <buffer> <C-c> <Esc>y$zb<C-l><C-j><C-y>pi<CR><C-h><esc>o
-
 autocmd FileType python nmap <buffer> <leader>lg <C-x><C-y>:sp /tmp/tmp.py<CR><C-j>--<C-k><C-j>--<C-h><C-l>
 
 autocmd FileType python nmap <buffer> <leader>j<C-x> :w<CR>:sp<CR>:terminal python3 -i % <CR>i
