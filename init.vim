@@ -198,11 +198,11 @@ nmap <C-g> :tabnew /tmp/tmp.py<CR><leader>g-j<C-x><C-k><esc>Go
 "command! -nargs=0 ABC +:vsp +:term +:set modifiable +:normal i 
 
 "paste to interpreter/shell
-nmap <C-y> mm_y$zb<C-l><C-j>pi<CR><C-h><esc>Mm
-nmap <C-c> y$zb<C-l><C-j>pi<CR><C-h><esc>j
-imap <C-y> <Esc>_y$zb<C-l><C-j><C-y>pi<CR><C-h><esc>o
-imap <C-c> <Esc>y$zb<C-l><C-j><C-y>pi<CR><C-h><esc>o
-vmap <C-c> y$zb<C-l><C-j>pi<CR><C-h><esc>j
+nmap <C-y> mm_y$<C-l><C-j>pi<CR><C-h><esc>Mm
+nmap <C-c> y$<C-l><C-j>pi<CR><C-h><esc>j
+imap <C-y> <Esc>_y$<C-l><C-j><C-y>pi<CR><C-h><esc>o
+imap <C-c> <Esc>y$<C-l><C-j><C-y>pi<CR><C-h><esc>o
+vmap <C-c> y$<C-l><C-j>pi<CR><C-h><esc>j
 
 vmap ^ <C-c>
 nmap ^ <C-c>
