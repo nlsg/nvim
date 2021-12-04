@@ -198,11 +198,41 @@ nmap <C-g> :tabnew /tmp/tmp.py<CR><leader>g-j<C-x><C-k><esc>Go
 "command! -nargs=0 ABC +:vsp +:term +:set modifiable +:normal i 
 
 "paste to interpreter/shell
-nmap <C-y> mm_y$<C-l><C-j>pi<CR><C-h><esc>Mm
-nmap <C-c> y$<C-l><C-j>pi<CR><C-h><esc>j
-imap <C-y> <Esc>_y$<C-l><C-j><C-y>pi<CR><C-h><esc>o
-imap <C-c> <Esc>y$<C-l><C-j><C-y>pi<CR><C-h><esc>o
-vmap <C-c> y$<C-l><C-j>pi<CR><C-h><esc>j
+function! ShellRight()
+  nmap <C-y> mm_y$<C-l>pi<CR><C-h><esc>Mm
+  nmap <C-c> y$<C-l>pi<CR><C-h><esc>j
+  imap <C-y> <Esc>_y$<C-l>pi<CR><C-h><esc>o
+  imap <C-c> <Esc>y$<C-l>pi<CR><C-h><esc>o
+  vmap <C-c> y$<C-l>pi<CR><C-h><esc>j
+endfunction
+
+asdasd
+kjkj
+kj
+
+
+jh
+
+jkj
+kj
+
+
+jh
+
+
+
+function! ShellDown()
+  nmap <C-y> mm_y$<C-j>pi<CR><C-k><esc>Mm
+  nmap <C-c> y$<C-j>pi<CR><C-k><esc>j
+  imap <C-y> <Esc>_y$<C-j>pi<CR><C-k><esc>o
+  imap <C-c> <Esc>y$<C-j>pi<CR><C-k><esc>o
+  vmap <C-c> y$<C-j>pi<CR><C-k><esc>j
+endfunction
+
+command! Sj call ShellDown()
+command! Sl call ShellRight()
+
+call ShellRight()
 
 vmap ^ <C-c>
 nmap ^ <C-c>
@@ -218,7 +248,7 @@ autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i %
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python nmap <buffer> <leader>lg <C-x><C-y>:sp /tmp/tmp.py<CR><C-j>--<C-k><C-j>--<C-h><C-l>
 
-autocmd FileType python nmap <buffer> <leader>j<C-x> :w<CR>:sp<CR>:terminal python3 -i % <CR>i
+autocmd FileType python nmap <buffer> <leader>j<C-x> :w<CR>:sp<CR>:terminal python4 -i % <CR>i
 autocmd FileType python nmap <buffer> <leader>j<C-y> mm_y$<C-j>pi<Enter><C-k><esc>Mm
 autocmd FileType python nmap <buffer> <leader>j<C-c> y$<C-j>pi<Enter><C-k><esc>j
 autocmd FileType python nmap <buffer> <leader>k<C-y> mm_y$<C-k>pi<Enter><C-j><esc>Mm
