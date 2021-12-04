@@ -173,10 +173,9 @@ imap <C-f> <Esc>/
 imap <C-x> <Esc>:wq<CR>
 
 "find and replace
-nmap % :%s/\<<C-r><C-w>\>//g<Left><Left>
 nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
-"translation
+"translation [e]nglish [d]eutsch
 nmap <leader>le <leader><leader>ltrans -t en -s de "<C-y>""pi"<CR><C-h>
 nmap <leader>ld <leader><leader>ltrans -t de -s en "<C-y>""pi"<CR><C-h>
 nmap <leader>je <leader><leader>jtrans -t en -s de "<C-y>""pi"<CR><C-k>
@@ -205,21 +204,6 @@ function! ShellRight()
   imap <C-c> <Esc>y$<C-l>pi<CR><C-h><esc>o
   vmap <C-c> y$<C-l>pi<CR><C-h><esc>j
 endfunction
-
-asdasd
-kjkj
-kj
-
-
-jh
-
-jkj
-kj
-
-
-jh
-
-
 
 function! ShellDown()
   nmap <C-y> mm_y$<C-j>pi<CR><C-k><esc>Mm
