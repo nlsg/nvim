@@ -72,6 +72,7 @@ nmap <leader>g :Goyo<CR>:set cursorline<CR>:hi CursorLine term=bold cterm=bold<C
  
 "delete line backwards
 nmap d_ v_d
+nmap c_ v_c
 
 "folds
 set foldmethod=indent
