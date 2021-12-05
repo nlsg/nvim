@@ -89,6 +89,7 @@ tmap <C-x> <C-y>:q<CR>
 "=========
 "buffer navigation
 nmap tt :tabnew ~/null<CR>:Ranger<CR>
+nmap <leader>k :tabnew ~/null<CR><leader>e
 nmap <leader><C-k> <C-h>:tabn<CR>
 nmap <leader><C-j> <C-h>:tabp<CR> 
 nmap <leader><C-l> <C-h>:tabmove +1<CR>
@@ -121,10 +122,10 @@ nmap <leader><leader><C-l> <C-w>L
 nmap <leader><leader><C-j> <C-w>J
 nmap <leader><leader><C-k> <C-w>K
 
-nmap <leader>lh :cd ~<CR>:vsp<CR>,e
-nmap <leader>jh :ch ~<CR>:sp<CR>,e
-nmap <leader>ll :cd %:p:h<CR>:vsp<CR>,e
-nmap <leader>jj :cd %:p:h<CR>:sp<CR>,e
+nmap <leader>lh :cd ~<CR>:vsp<CR><leader>e
+nmap <leader>jh :ch ~<CR>:sp<CR><leader>e
+nmap <leader>ll :cd %:p:h<CR>:vsp<CR><leader>e
+nmap <leader>jj :cd %:p:h<CR>:sp<CR><leader>e
 nmap <leader><leader>l :vsp<CR>:term<CR>i
 nmap <leader><leader>j :sp<CR>:term<CR>i
 nmap <leader>lr :vsp<CR>:Ranger<CR>
@@ -216,6 +217,8 @@ endfunction
 command! Sj call ShellDown()
 command! Sl call ShellRight()
 
+command! FormatJson normal! :%!python -m json.tool<CR>
+
 call ShellRight()
 
 vmap ^ <C-c>
@@ -227,6 +230,8 @@ nmap ! <C-x>
 "========
 
 autocmd BufEnter * silent! lcd %:p:h  "allways change dir to current buffer/window dir
+
+autocmd FileType python nmap <buffer> <leader>c c<C-l>from os import system as s;s("clear")<CR><C-h>
 autocmd FileType python nmap <buffer> <leader><leader>g <leader>g-j<C-x><C-k><esc>zz
 autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % <CR>i
