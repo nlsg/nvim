@@ -5,7 +5,10 @@
 syntax enable
 "plugins
 "=======
+
 call plug#begin()
+Plug 'dense-analysis/ale'
+Plug 'rust-lang/rust.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'https://github.com/junegunn/goyo.vim'
@@ -17,6 +20,21 @@ Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 Plug 'https://github.com/tpope/vim-surround' " new surround(ys ..), ds.. ,cs.. 
 call plug#end()
+
+"rust
+"====
+filetype plugin indent on
+let g:ale_linters = {'rust': ['analyzer'],}
+
+let g:ale_fixers = { 'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'] }
+
+" Optional, configure as-you-type completions
+set completeopt=menu,menuone,preview,noselect,noinsert
+let g:ale_completion_enabled = 1
+
+autocmd BufNewFile,BufRead *.rs set filetype=rust
+
+
 
 let g:jedi#goto_command = "<C-p>d"
 let g:jedi#goto_assignments_command = "<C-p>a"
@@ -198,12 +216,29 @@ nmap <C-g> :tabnew /tmp/tmp.py<CR><leader>g-j<C-x><C-k><esc>Go
 "command! -nargs=0 ABC +:vsp +:term +:set modifiable +:normal i 
 
 "paste to interpreter/shell
+
+function! ShellLeft()
+  nmap <C-y> mm_y$<C-h>pi<CR><C-l><esc>Mm
+  nmap <C-c> y$<C-h>pi<CR><C-l><esc>j
+  imap <C-y> <Esc>_y$<C-h>pi<CR><C-l><esc>o
+  imap <C-c> <Esc>y$<C-h>pi<CR><C-l><esc>o
+  vmap <C-c> y$<C-h>pi<CR><C-l><esc>j
+endfunction
+
 function! ShellRight()
   nmap <C-y> mm_y$<C-l>pi<CR><C-h><esc>Mm
   nmap <C-c> y$<C-l>pi<CR><C-h><esc>j
   imap <C-y> <Esc>_y$<C-l>pi<CR><C-h><esc>o
   imap <C-c> <Esc>y$<C-l>pi<CR><C-h><esc>o
   vmap <C-c> y$<C-l>pi<CR><C-h><esc>j
+endfunction
+
+function! ShellUp()
+  nmap <C-y> mm_y$<C-k>pi<CR><C-j><esc>Mm
+  nmap <C-c> y$<C-k>pi<CR><C-j><esc>j
+  imap <C-y> <Esc>_y$<C-k>pi<CR><C-j><esc>o
+  imap <C-c> <Esc>y$<C-k>pi<CR><C-j><esc>o
+  vmap <C-c> y$<C-k>pi<CR><C-j><esc>j
 endfunction
 
 function! ShellDown()
@@ -214,8 +249,10 @@ function! ShellDown()
   vmap <C-c> y$<C-j>pi<CR><C-k><esc>j
 endfunction
 
-command! Sj call ShellDown()
+command! Sh call ShellLeft()
 command! Sl call ShellRight()
+command! Sj call ShellDown()
+command! Sk call ShellUp()
 
 command! FormatJson normal! :%!python -m json.tool<CR>
 
