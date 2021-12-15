@@ -7,8 +7,11 @@ syntax enable
 "=======
 
 call plug#begin()
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
+
+
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'https://github.com/junegunn/goyo.vim'
@@ -54,6 +57,7 @@ let g:airline_theme='owo'
 let mapleader = " "
 "2nd leader , 
 
+set mouse=n
 set cursorline
 hi CursorLine term=bold cterm=bold
 
@@ -71,16 +75,16 @@ set splitright
 nmap M `
 
 "german keyboard layout optimisation
-nmap ö "
-imap ö "
-vmap ö "
-tmap ö "
-cmap ö "
-nmap ä @
-imap ä @
-vmap ä @
-tmap ä @
-cmap ä @
+nmap ä "
+imap ä "
+vmap ä "
+tmap ä "
+cmap ä "
+nmap ö @
+imap ö @
+vmap ö @
+tmap ö @
+cmap ö @
 
 "spellcheck
 nmap <leader>o :setlocal spell! spelllang=en_us<CR>
@@ -107,11 +111,14 @@ tmap <C-x> <C-y>:q<CR>
 "=========
 "buffer navigation
 nmap tt :tabnew ~/null<CR>:Ranger<CR>
-nmap <leader>k :tabnew ~/null<CR><leader>e
 nmap <leader><C-k> <C-h>:tabn<CR>
 nmap <leader><C-j> <C-h>:tabp<CR> 
 nmap <leader><C-l> <C-h>:tabmove +1<CR>
 nmap <leader><C-h> <C-h>:tabmove -1<CR> 
+
+"move lines
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 
 "window navigation 
 nmap <C-h> <C-w>h
@@ -142,8 +149,8 @@ nmap <leader><leader><C-k> <C-w>K
 
 nmap <leader>lh :cd ~<CR>:vsp<CR><leader>e
 nmap <leader>jh :ch ~<CR>:sp<CR><leader>e
-nmap <leader>ll :cd %:p:h<CR>:vsp<CR><leader>e
-nmap <leader>jj :cd %:p:h<CR>:sp<CR><leader>e
+nmap <leader>ll <CR>:vsp<CR><leader>e
+nmap <leader>jj <CR>:sp<CR><leader>e
 nmap <leader><leader>l :vsp<CR>:term<CR>i
 nmap <leader><leader>j :sp<CR>:term<CR>i
 nmap <leader>lr :vsp<CR>:Ranger<CR>
@@ -189,7 +196,7 @@ nmap <leader>n nzz
 nmap <leader>N Nzz
 nmap <leader>s :wa<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>:qa<CR>
 imap <C-f> <Esc>/
-imap <C-x> <Esc>:wq<CR>
+" imap <C-x> <Esc>:wq<CR>
 
 "find and replace
 nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
@@ -268,19 +275,29 @@ nmap ! <C-x>
 
 autocmd BufEnter * silent! lcd %:p:h  "allways change dir to current buffer/window dir
 
-autocmd FileType python nmap <buffer> <leader>c c<C-l>from os import system as s;s("clear")<CR><C-h>
+autocmd FileType python nmap <buffer> <leader>cl Inut.listing(<Esc>A)<Esc><C-y>
+autocmd FileType python nmap <buffer> <leader>cr Inut.ranger(<Esc>A)<Esc><C-y>
+autocmd FileType python nmap <buffer> <leader>cg A)<Esc>Inut.grep("",<left><left>
+autocmd FileType python nmap <buffer> <leader>cvl Inut.listing(<Esc>A)<Esc>
+autocmd FileType python nmap <buffer> <leader>cvr Inut.ranger(<Esc>A)<Esc>
+autocmd FileType python nmap <buffer> <leader>cc c<C-l>from os import system as s;s("clear")<CR><C-h>
+
 autocmd FileType python nmap <buffer> <leader><leader>g <leader>g-j<C-x><C-k><esc>zz
 autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python imap <buffer> <C-x> <esc>:w<CR>:vsp<CR>:terminal python3 -i % <CR>i
 autocmd FileType python nmap <buffer> <leader>lg <C-x><C-y>:sp /tmp/tmp.py<CR><C-j>--<C-k><C-j>--<C-h><C-l>
 
-autocmd FileType python nmap <buffer> <leader>j<C-x> :w<CR>:sp<CR>:terminal python4 -i % <CR>i
-autocmd FileType python nmap <buffer> <leader>j<C-y> mm_y$<C-j>pi<Enter><C-k><esc>Mm
-autocmd FileType python nmap <buffer> <leader>j<C-c> y$<C-j>pi<Enter><C-k><esc>j
-autocmd FileType python nmap <buffer> <leader>k<C-y> mm_y$<C-k>pi<Enter><C-j><esc>Mm
-autocmd FileType python nmap <buffer> <leader>k<C-c> y$<C-k>pi<Enter><C-j><esc>j
-autocmd FileType python nmap <buffer> <leader>l<C-y> mm_y$<C-l><C-j>pi<Enter><C-h><esc>Mm
-autocmd FileType python nmap <buffer> <leader>l<C-c> y$<C-l><C-j>pi<Enter><C-h><esc>j
-
 autocmd FileType help wincmd L
+
+
+augroup Racer
+    autocmd!
+    autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
+    autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
+    autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
+    autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
+    autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
+    autocmd FileType rust nmap <buffer> <leader>gD <Plug>(rust-doc-tab)
+augroup END
+
 
