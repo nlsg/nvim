@@ -110,7 +110,7 @@ tmap <C-x> <C-y>:q<CR>
 "navigation
 "=========
 "buffer navigation
-nmap tt :tabnew ~/null<CR>:Ranger<CR>
+nmap tt :tabnew ~/null<CR>:cd ~<CR><leader>e
 nmap <leader><C-k> <C-h>:tabn<CR>
 nmap <leader><C-j> <C-h>:tabp<CR> 
 nmap <leader><C-l> <C-h>:tabmove +1<CR>
@@ -192,12 +192,13 @@ nmap <C-s> :w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 imap <C-s> <Esc>:w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 nmap <C-q> :q<CR>
 nmap P o<Esc>p
+nmap <leader>r :checktime<CR>
 nmap <leader>n nzz
 nmap <leader>N Nzz
-nmap <leader>s :wa<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>:qa<CR>
+nmap <leader>ss :wa<CR>:mksession! ~/s.vim<CR><CR>:qa<CR>
+nmap <leader>sp :wa<CR>:mksession! ~/p.vim<CR><CR>:qa<CR>
 imap <C-f> <Esc>/
 " imap <C-x> <Esc>:wq<CR>
-
 "find and replace
 nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
@@ -212,7 +213,11 @@ nmap <leader>ls <leader><leader>lvimlinks.py <C-y>""pi<CR>
 nmap <leader>js <leader><leader>jvimlinks.py <C-y>""pi<CR>
 vmap <leader>ls y<leader><leader>lvimlinks.py <C-y>""pi<CR>
 vmap <leader>js y<leader><leader>jvimlinks.py <C-y>""pi<CR>
-
+"cheat-sheet
+nmap <leader>lc <leader><leader>lvimcheatsheet.py <C-y>""pi<CR>
+nmap <leader>jc <leader><leader>jvimcheatsheet.py <C-y>""pi<CR>
+vmap <leader>lc y<leader><leader>lvimcheatsheet.py <C-y>""pi<CR>
+vmap <leader>jc y<leader><leader>jvimcheatsheet.py <C-y>""pi<CR>
 "  jisters and macros
 "<C-r>q (in insert mode) to paste the macro stored in q
 " "q to accesss register ie "qyaw | "wy$ | "wp 
