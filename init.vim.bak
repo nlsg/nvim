@@ -11,7 +11,6 @@ call plug#begin()
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 
-Plug 'https://github.com/dhruvasagar/vim-table-mode'
 
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
@@ -37,6 +36,8 @@ set completeopt=menu,menuone,preview,noselect,noinsert
 let g:ale_completion_enabled = 1
 
 autocmd BufNewFile,BufRead *.rs set filetype=rust
+
+
 
 let g:jedi#goto_command = "<C-p>d"
 let g:jedi#goto_assignments_command = "<C-p>a"
@@ -181,8 +182,8 @@ nmap <leader>e :Files<CR>
 nmap ,g :GFiles<CR>
 
 "push.py
-nmap <leader>p :w<CR>:Sopen<CR>push.py -m ""<Left>
-nmap <leader><leader>p :w<CR>:Sopen<CR>push.py<CR>
+nmap <leader>p :w<CR><leader><leader>lpush.py -m ""<Left>
+nmap <leader><leader>p :w<CR><leader><leader>lpush.py<CR>
 
 "misc
 nmap U <C-r>
@@ -216,18 +217,62 @@ nmap <leader>lc <leader><leader>lvimcheatsheet.py <C-y>""pi<CR>
 nmap <leader>jc <leader><leader>jvimcheatsheet.py <C-y>""pi<CR>
 vmap <leader>lc y<leader><leader>lvimcheatsheet.py <C-y>""pi<CR>
 vmap <leader>jc y<leader><leader>jvimcheatsheet.py <C-y>""pi<CR>
-
-"registers and macros
+"  jisters and macros
 "<C-r>q (in insert mode) to paste the macro stored in q
 " "q to accesss register ie "qyaw | "wy$ | "wp 
 
 "open goyo python session
 nmap <C-g> :tabnew /tmp/tmp.py<CR><leader>g-j<C-x><C-k><esc>Go 
 
-" source shi-file
-nmap <C-x> :Sopen<CR>
+"command! -nargs=0 ABC +:vsp +:term +:set modifiable +:normal i 
+
+"paste to interpreter/shell
+
+function! ShellMapLeft()
+  nmap <C-y> mm_y$<C-h>pi<CR><C-l><esc>Mm
+  nmap <C-c> y$<C-h>pi<CR><C-l><esc>j
+  imap <C-y> <Esc>_y$<C-h>pi<CR><C-l><esc>o
+  imap <C-c> <Esc>y$<C-h>pi<CR><C-l><esc>o
+  vmap <C-c> y$<C-h>pi<CR><C-l><esc>j
+endfunction
+
+function! ShellMapRight()
+  nmap <C-y> mm_y$<C-l>pi<CR><C-h><esc>Mm
+  nmap <C-c> y$<C-l>pi<CR><C-h><esc>j
+  imap <C-y> <Esc>_y$<C-l>pi<CR><C-h><esc>o
+  imap <C-c> <Esc>y$<C-l>pi<CR><C-h><esc>o
+  vmap <C-c> y$<C-l>pi<CR><C-h><esc>j
+  command! Sopen normal! :vsp<CR>:terminal
+endfunction
+
+function! ShellMapUp()
+  nmap <C-y> mm_y$<C-k>pi<CR><C-j><esc>Mm
+  nmap <C-c> y$<C-k>pi<CR><C-j><esc>j
+  imap <C-y> <Esc>_y$<C-k>pi<CR><C-j><esc>o
+  imap <C-c> <Esc>y$<C-k>pi<CR><C-j><esc>o
+  vmap <C-c> y$<C-k>pi<CR><C-j><esc>j
+endfunction
+
+function! ShellMapDown()
+  nmap <C-y> mm_y$<C-j>pi<CR><C-k><esc>Mm
+  nmap <C-c> y$<C-j>pi<CR><C-k><esc>j
+  imap <C-y> <Esc>_y$<C-j>pi<CR><C-k><esc>o
+  imap <C-c> <Esc>y$<C-j>pi<CR><C-k><esc>o
+  vmap <C-c> y$<C-j>pi<CR><C-k><esc>j
+  command! Sopen normal! :sp<CR>:terminal
+endfunction
+
+command! Sh call ShellMapLeft()
+command! Sl call ShellMapRight()
+command! Sj call ShellMapDown()
+command! Sk call ShellMapUp()
+
+call ShellMapRight()
+
+nmap <C-x> :Sopen<CR>i
 
 command! FormatJson normal! :%!python -m json.tool<CR>
+
 
 vmap ^ <C-c>
 nmap ^ <C-c>
@@ -247,7 +292,8 @@ autocmd FileType python nmap <buffer> <leader>cvr Inut.ranger(<Esc>A)<Esc>
 autocmd FileType python nmap <buffer> <leader>cc c<C-l>from os import system as s;s("clear")<CR><C-h>
 
 autocmd FileType python nmap <buffer> <leader><leader>g <leader>g-j<C-x><C-k><esc>zz
-autocmd FileType python nmap <buffer> <C-x> :SopenPython<CR> python3 -i % <CR>i
+"autocmd FileType python nmap <buffer> <C-x> :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
+autocmd FileType python nmap <buffer> <C-x> :Sopen python3 -i % <CR>i
 autocmd FileType python nmap <buffer> <leader>lg <C-x><C-y>:sp /tmp/tmp.py<CR><C-j>--<C-k><C-j>--<C-h><C-l>
 
 autocmd FileType help wincmd L
