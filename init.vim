@@ -10,9 +10,7 @@ call plug#begin()
 " Plug 'dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
-
 Plug 'https://github.com/dhruvasagar/vim-table-mode'
-
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'https://github.com/junegunn/goyo.vim'
@@ -155,7 +153,6 @@ nmap <leader><leader>j :sp<CR>:term<CR>i
 nmap <leader>lr :vsp<CR>:Ranger<CR>
 nmap <leader>jr :sp<CR>:Ranger<CR>
 
-
 "registers to resize splits
 let @h = "<"
 let @l = ">"
@@ -205,7 +202,6 @@ nmap <leader>le <leader><leader>ltrans -t en -s de "<C-y>""pi"<CR><C-h>
 nmap <leader>ld <leader><leader>ltrans -t de -s en "<C-y>""pi"<CR><C-h>
 nmap <leader>je <leader><leader>jtrans -t en -s de "<C-y>""pi"<CR><C-k>
 nmap <leader>jd <leader><leader>jtrans -t de -s en "<C-y>""pi"<CR><C-k>
-
 "links [s]earch
 nmap <leader>ls <leader><leader>lvimlinks.py <C-y>""pi<CR>
 nmap <leader>js <leader><leader>jvimlinks.py <C-y>""pi<CR>
@@ -233,6 +229,12 @@ vmap ^ <C-c>
 nmap ^ <C-c>
 nmap ¨ <C-y>
 nmap ! <C-x>
+
+nmap <C-y>    mm_"sy$:SgotoTerm<CR>"spi<CR><C-y>:SleaveTerm<CR><Esc>Mm
+nmap <C-c>       "sy$:SgotoTerm<CR>"spi<CR><C-y>:SleaveTerm<CR><Esc>j
+imap <C-y> <Esc>_"sy$:SgotoTerm<CR>"spi<CR><C-y>:SleaveTerm<CR><Esc>o
+imap <C-c>  <Esc>"sy$:SgotoTerm<CR>"spi<CR><C-y>:SleaveTerm<CR><Esc>o
+vmap <C-c>       "sy$:SgotoTerm<CR>"spi<CR><C-y>:SleaveTerm<CR><Esc>j
 
 "autocmds
 "========

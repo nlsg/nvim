@@ -1,48 +1,27 @@
 "simple helper script, for better shell integration (shi)
 
-function! ShellUpdateCommands()
-  let g:shi#command_core = g:shi#shell_direction . "pi\<CR\>" . g:shi#back_direction . "\<esc\>"
-  let g:shi#npaste_line = "nmap \<C-y\> mm_y$" . g:shi#command_core . "Mm"
-  let g:shi#npaste = "nmap \<C-c\> y$" . g:shi#command_core . "j"
-  let g:shi#ipaste_line = "imap \<C-y\> \<Esc\>_y$" . g:shi#command_core . "o"
-  let g:shi#ipaste = "imap \<C-c\> \<Esc\>y$" . g:shi#command_core . "o"
-  let g:shi#vpaste = "vmap \<C-c\> y$" . g:shi#command_core . "j"
-  execute g:shi#npaste_line
-  execute g:shi#npaste 
-  execute g:shi#ipaste_line
-  execute g:shi#ipaste
-  execute g:shi#vpaste
-
-endfunction
-
 function! ShellMapLeft()
-  let g:shi#shell_direction = "\<C-h\>"
-  let g:shi#back_direction  = "\<C-l\>"
+  command! SgotoTerm normal! <C-w>h
+  command! SleaveTerm normal! <C-w>l
 endfunction
-  call ShellUpdateCommands()
 
 function! ShellMapUp()
-  let g:shi#shell_direction = "\<C-k\>"
-  let g:shi#back_direction  = "\<C-j\>"
-  call ShellUpdateCommands()
+  command! SgotoTerm normal! <C-w>k
+  command! SleaveTerm normal! <C-w>j
 endfunction
 
 function! ShellMapRight()
-  let g:shi#shell_direction = "\<C-l\>"
-  let g:shi#back_direction  = "\<C-h\>"
-  let g:shellDirection = ":vsp\<CR>"
+  command! SgotoTerm normal! <C-w>l
+  command! SleaveTerm normal! <C-w>h
   command! SopenPython normal! :w<CR>:vsp<CR>:terminal python3 -i % <CR>i
   command! Sopen normal! :w<CR>:vsp<CR>:terminal <CR>i
-  call ShellUpdateCommands()
 endfunction
 
 function! ShellMapDown()
-  let g:shi#shell_direction = "\<C-j\>"
-  let g:shi#back_direction  = "\<C-k\>"
-  let g:shellDirection = ":sp\<CR>"
+  command! SgotoTerm normal! <C-w>j
+  command! SleaveTerm normal! <C-w>k
   command! SopenPython normal! :w<CR>:sp<CR>:terminal python3 -i % <CR>i
   command! Sopen normal! :w<CR>:sp<CR>:terminal <CR>i
-  call ShellUpdateCommands()
 endfunction
 
 command! Sh call ShellMapLeft()
