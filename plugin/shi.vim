@@ -13,11 +13,6 @@ function! ShellUpdateCommands()
   execute g:shi#ipaste
   execute g:shi#vpaste
 
-  command! Snpaste_line execute "normal! mm_y$" . g:shi#command_core . "Mm"
-  command! Snpaste      execute "normal! y$" . g:shi#command_core . "j"
-  command! Sipaste_line execute "normal! \<Esc\>_y$" . g:shi#command_core . "o"
-  command! Sipaste      execute "normal! \<Esc\>y$" . g:shi#command_core . "o"
-  command! Svpaste      execute "normal! y$" . g:shi#command_core . "j"
 endfunction
 
 function! ShellMapLeft()

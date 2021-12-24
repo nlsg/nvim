@@ -110,10 +110,10 @@ tmap <C-x> <C-y>:q<CR>
 "=========
 "buffer navigation
 nmap tt :tabnew ~/null<CR>:cd ~<CR><leader>e
-nmap <leader><C-k> <C-h>:tabn<CR>
-nmap <leader><C-j> <C-h>:tabp<CR> 
-nmap <leader><C-l> <C-h>:tabmove +1<CR>
-nmap <leader><C-h> <C-h>:tabmove -1<CR> 
+nmap <leader>d <C-h>:tabn<CR><leader>
+nmap <leader>a <C-h>:tabp<CR> 
+nmap <leader>D <C-h>:tabmove +1<CR>
+nmap <leader>A <C-h>:tabmove -1<CR> 
 
 "move lines
 vnoremap <C-j> :m '>+1<CR>gv=gv
@@ -141,10 +141,10 @@ nmap c<C-h> <C-w>hi
 nmap c<C-l> <C-w>li
 nmap c<C-j> <C-w>ji
 nmap c<C-k> <C-w>ki
-nmap <leader><leader><C-h> <C-w>H
-nmap <leader><leader><C-l> <C-w>L
-nmap <leader><leader><C-j> <C-w>J
-nmap <leader><leader><C-k> <C-w>K
+nmap <leader><C-h> <C-w>H
+nmap <leader><C-l> <C-w>L
+nmap <leader><C-j> <C-w>J
+nmap <leader><C-k> <C-w>K
 
 nmap <leader>lh :cd ~<CR>:vsp<CR><leader>e
 nmap <leader>jh :ch ~<CR>:sp<CR><leader>e
