@@ -1,9 +1,9 @@
 # nvim
 
-##a minimalistic nvim setup
+a minimalistic nvim setup
 =========================
 this vim configuration is optimized for interactive development 
-especially interpreted languages like bash and python.
+especially interpreted languages like bash, python.
  ```
 ┌────────────────────────────────────────────────────────────┐
 │Tabs░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░│
@@ -30,6 +30,7 @@ especially interpreted languages like bash and python.
 
 ## **shi.vim**
 this vim configuration features the shi module (ShellIntegration)
+
 |-----------------|----------------------------------------------------------|
 | cmd             | description                                              |
 |-----------------|----------------------------------------------------------|
@@ -39,6 +40,9 @@ this vim configuration features the shi module (ShellIntegration)
 | :Smove[hjkl]    | move to pointing (hjkl) window                           |
 | :SgotoTerm      | move to shell (to set direction) [i.e. ->]               |
 | :SleaveTerm     | move back from shell (from set direction) [i.e. <-]      |
+
+
+
 
 it is used to execute [] in a shell
 
