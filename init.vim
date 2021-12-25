@@ -243,7 +243,6 @@ vmap <C-c>       "sy$:SgotoTerm<CR>"spi<CR><C-y>:SleaveTerm<CR><Esc>j
 
 "autocmds
 "========
-
 autocmd BufEnter * silent! lcd %:p:h  "allways change dir to current buffer/window dir
 
 autocmd FileType python nmap <buffer> <leader>cl Inut.listing(<Esc>A)<Esc><C-y>

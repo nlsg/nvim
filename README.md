@@ -50,6 +50,7 @@ this vim configuration features the shi module (ShellIntegration)
 **usefull to use with range e.g 12\<C-c\> to execute the next 12 lines in the shell
 
 ## keybinding
+
 | split navigation  |
 |-------------------|------------------------------------|
 | <C-[hjkl]         | move to [left,down,up,right] split |
