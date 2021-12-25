@@ -28,7 +28,7 @@ especially interpreted languages like bash, python.
 ╘═════════════════════════════╧══════════════════════════════╛
 ```
 
-## **shi.vim**
+## shi.vim
 this vim configuration features the shi module (ShellIntegration)
 
 | cmd             | description                                                       |
@@ -49,11 +49,14 @@ this vim configuration features the shi module (ShellIntegration)
 
 **usefull to use with range e.g 12\<C-c\> to execute the next 12 lines in the shell
 
-# **navigation**
-| keybinding        | description                        |
+## keybinding
+| split navigation  |
 |-------------------|------------------------------------|
 | <C-[hjkl]         | move to [left,down,up,right] split |
 | d<C-[hjkl]        | writequit pointing split           |
 | c<C[hjkl]         | move and enter insert mode         |
 | <leader><c-[hjkl] | move split in pointing direction   |
+| tab navigation    |
+|-------------------|------------------------------------|
+| tt                | new tab                            |
 
