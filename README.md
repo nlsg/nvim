@@ -49,4 +49,4 @@ this vim configuration features the shi module (ShellIntegration)
 
 
 
-*1usefull to use with range e.g 12<C-c> to execute the next 12 lines in the shell*
+**usefull to use with range e.g 12\<C-c\> to execute the next 12 lines in the shell*
