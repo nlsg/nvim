@@ -39,13 +39,13 @@ this vim configuration features the shi module (ShellIntegration)
 | :Smove[hjkl]    | move to pointing (hjkl) window                                    |
 | :SgotoTerm      | move to shell (to set direction) [e.g. ->]                        |
 | :SleaveTerm     | move back from shell (from set direction) [e.g. <-]               |
-|-----------------|-------------------------------------------------------------------|
-| keybinding      | action                                                            |
-|-----------------|-------------------------------------------------------------------|
-| nmap <C-y>      | execute current line in attached shell                            |
-| nmap <C-c>      | execute from current position to line end and go to next line *1  |
-| imap <C-y>      | stay in insert mode and go to next line (replacement for <Return> |
-| vmap <C-c>      | execute selection in shell
+
+| keybinding | action                                                            |
+|------------|-------------------------------------------------------------------|
+| nmap <C-y> | execute current line in attached shell                            |
+| nmap <C-c> | execute from current position to line end and go to next line *1  |
+| imap <C-y> | stay in insert mode and go to next line (replacement for <Return> |
+| vmap <C-c> | execute selection in shell
 
 
 
