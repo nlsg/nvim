@@ -28,21 +28,11 @@ and python development
 ╘═════════════════════════════╧══════════════════════════════╛
 ```
 
-## **Keybindings**
-this nvim file introduces some new basic motions.
+## **shi.vim**
+this vim configuration features the shi module (ShellIntegration)
+|:Sh,:Sj,:Sk,:Sl|set the direcion of the attached shell|
 
-| <C-[h,j,k,l]>  | point/switch to window/pane | left, lower, upper, right |
-| d<C-[h,j,k,l]> | delete pointing window/pane |
-| c<C-[h,j,k,l]> | change pointing window/pane | (goto and go to insert) |
-|  ------------- | --------------------------- |
-|  -<C-[j,k]>    | change buffer/tab | left, right |
-|  ------------- | --------------------------- |
----
-| -[jj,ll]       | new pane   | lower(:sp), right(:vsp) fzf in current buffer directory |
-| -[J,L]         | new pane   | lower(:sp), right(:vsp) fzf in home directory |
-| --[j,l]        | new termin | lower(:sp), right(:vsp) fzf in current buffer directory |
-
-Italic	*italicized text*
+it is used to execute [] in a shell
 
 Blockquote	> blockquote
 

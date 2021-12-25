@@ -12,9 +12,9 @@ Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'https://github.com/dhruvasagar/vim-table-mode'
 Plug 'francoiscabrol/ranger.vim'
-Plug 'rbgrouleff/bclose.vim'
+Plug 'rbrouleff/bclose.vim'
 Plug 'https://github.com/junegunn/goyo.vim'
-Plug 'https://github.com/davidhalter/jedi-vim'
+" Plug 'https://github.com/davidhalter/jedi-vim'
 Plug 'https://github.com/tmhedberg/SimpylFold'
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'https://github.com/junegunn/fzf.vim' " fzf ,f ,e ,g ...
@@ -118,10 +118,15 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
 "window navigation 
+command! Smoveh normal <C-w>h
+command! Smovej normal <C-w>j
+command! Smovek normal <C-w>k
+command! Smovel normal <C-w>l
+
 nmap <C-h> <C-w>h
-nmap <C-l> <C-w>l
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
 imap <C-h> <Esc><C-w>hi
 imap <C-l> <Esc><C-w>li
 imap <C-j> <Esc><C-w>ji
@@ -254,6 +259,7 @@ autocmd FileType python nmap <buffer> <leader>lg <C-x><C-y>:sp /tmp/tmp.py<CR><C
 
 autocmd FileType help wincmd L
 
+autocmd FileType vim nmap <buffer> <C-a> :w<CR>:source<CR>
 
 augroup Racer
   autocmd!
