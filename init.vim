@@ -235,10 +235,10 @@ nmap ^ <C-c>
 nmap ¨ <C-y>
 nmap ! <C-x>
 
+nmap <leader>y :Sopen<CR><UP><CR>
 nmap <C-y>    mm_"sy$:SgotoTerm<CR>"spi<CR><C-y>:SleaveTerm<CR><Esc>Mm
 nmap <C-c>       "sy$:SgotoTerm<CR>"spi<CR><C-y>:SleaveTerm<CR><Esc>j
 imap <C-y> <Esc>_"sy$:SgotoTerm<CR>"spi<CR><C-y>:SleaveTerm<CR><Esc>o
-imap <C-c>  <Esc>"sy$:SgotoTerm<CR>"spi<CR><C-y>:SleaveTerm<CR><Esc>o
 vmap <C-c>       "sy$:SgotoTerm<CR>"spi<CR><C-y>:SleaveTerm<CR><Esc>j
 
 "autocmds

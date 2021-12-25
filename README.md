@@ -43,10 +43,17 @@ this vim configuration features the shi module (ShellIntegration)
 | keybinding | action                                                            |
 |------------|-------------------------------------------------------------------|
 | nmap <C-y> | execute current line in attached shell                            |
-| nmap <C-c> | execute from current position to line end and go to next line *1  |
+| nmap <C-c> | execute from current position to line end and go to next line \*1 |
 | imap <C-y> | stay in insert mode and go to next line (replacement for <Return> |
 | vmap <C-c> | execute selection in shell
 
+**usefull to use with range e.g 12\<C-c\> to execute the next 12 lines in the shell
 
+# **navigation**
+| keybinding        | description                        |
+|-------------------|------------------------------------|
+| <C-[hjkl]         | move to [left,down,up,right] split |
+| d<C-[hjkl]        | writequit pointing split           |
+| c<C[hjkl]         | move and enter insert mode         |
+| <leader><c-[hjkl] | move split in pointing direction   |
 
-**usefull to use with range e.g 12\<C-c\> to execute the next 12 lines in the shell*
