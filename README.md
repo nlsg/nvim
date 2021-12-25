@@ -2,8 +2,8 @@
 
 ##a minimalistic nvim setup
 =========================
-it is optimized for quertz-keyboards,
-and python development
+this vim configuration is optimized for interactive development 
+especially interpreted languages like bash and python.
  ```
 ┌────────────────────────────────────────────────────────────┐
 │Tabs░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░│
@@ -30,7 +30,15 @@ and python development
 
 ## **shi.vim**
 this vim configuration features the shi module (ShellIntegration)
-|:Sh,:Sj,:Sk,:Sl|set the direcion of the attached shell|
+|-----------------|----------------------------------------------------------|
+| cmd             | description                                              |
+|-----------------|----------------------------------------------------------|
+| :Sh,:Sj,:Sk,:Sl | set the direcion of the attached shell                   |
+| :Sopen          | open a shell/intergreter at the direction which was set  |
+| :SopenPython    | open a python interpreter at the direction which was set |
+| :Smove[hjkl]    | move to pointing (hjkl) window                           |
+| :SgotoTerm      | move to shell (to set direction) [i.e. ->]               |
+| :SleaveTerm     | move back from shell (from set direction) [i.e. <-]      |
 
 it is used to execute [] in a shell
 
