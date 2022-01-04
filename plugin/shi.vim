@@ -3,11 +3,13 @@
 function! ShellMapLeft()
   command! SgotoTerm normal! <C-w>h
   command! SleaveTerm normal! <C-w>l
+  command! Sopen normal! :w<CR>:sp<CR><C-w>let g:airline#extensions#tabline#left_alt_sep = '|'H:terminal <CR>i
 endfunction
 
 function! ShellMapUp()
   command! SgotoTerm normal! <C-w>k
   command! SleaveTerm normal! <C-w>j
+  command! Sopen normal! :w<CR>:sp<CR><C-w>K:terminal <CR>i
 endfunction
 
 function! ShellMapRight()
@@ -24,11 +26,11 @@ function! ShellMapDown()
   command! Sopen normal! :w<CR>:sp<CR>:terminal <CR>i
 endfunction
 
-command! Sh call ShellMapLeft()
+command! Sh call ShellMapDown()
 command! Sl call ShellMapRight()
 command! Sj call ShellMapDown()
 command! Sk call ShellMapUp()
 
-call ShellMapRight()
+call ShellMapDown()
 
 

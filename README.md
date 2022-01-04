@@ -8,23 +8,23 @@ especially interpreted languages like bash, python.
  ```
 ┌tab1─tab2─tabn──────────────────────────────────────────────┐
 ├─────────────────────────────┬──────────────────────────────┤
-│Code                         │Code                          │
-│                             │                              │
-│                             │                              │
-│                             │                              │
-│                             │                           <───────┐direction set to j(:Sj)
-│                             │                              │    │
-│                             │                {:SgotoTerm}────┐  │
-│                             │                              │ │  │
-│                             ├──────────────────────────────┤ │  │
-│                             │Shell/Interpreter             │ │  │
-│                             │                           <────┘  │
-│                             │                              │    │
-│   direction set to l(:Sl)   │                {:SgotoTerm}───────┘
-│                     -{:SgotoTerm}->                        │
-│                     <-{:SleaveTerm}-                       │
-│                             │                              │
-│                             │                              │
+│Shell                        │Code                          │
+│       <─┐   {:SgotoTerm}┐   │~                             │
+├─────────│───────────────│───┤~                             │
+│Code     │               │   │~                             │direction set to j(:Sj)
+│~                            │~                          <───────┐   
+│~                            │~                             │    │   
+│~                            │~               {:SgotoTerm}────┐  │   
+│~                            │~                             │ │  │
+│~                            ├──────────────────────────────┤ │  │
+│~                            │Shell                         │ │  │
+│~                            │                           <────┘  │
+│~                            │                              │    │
+│~  direction set to l(:Sl)   │                {:SgotoTerm}───────┘
+│~                    -{:SgotoTerm}->                        │
+│~                    <-{:SleaveTerm}-                       │
+│~                            │                              │
+│~                            │                              │
 ╘═════════════════════════════╧══════════════════════════════╛
 ```
 
@@ -49,15 +49,22 @@ this vim configuration features the shi module (ShellIntegration)
 
 **usefull to use with range e.g 12\<C-c\> to execute the next 12 lines in the shell
 
-## keybinding
+## split navigation
 
-| split navigation  |
+| split navigation  |                                    |
 |-------------------|------------------------------------|
 | <C-[hjkl]         | move to [left,down,up,right] split |
 | d<C-[hjkl]        | writequit pointing split           |
 | c<C[hjkl]         | move and enter insert mode         |
 | <leader><c-[hjkl] | move split in pointing direction   |
-| tab navigation    |
-|-------------------|------------------------------------|
-| tt                | new tab                            |
+| tadirection set to j(:Sj)b navigation    |                                    |
+
+| tab navigation |                         |
+|----------------|-------------------------|
+| <leader>[ad]   | move to [prev/next] tab |
+
+| buffer navigation |                                            |
+|-------------------|--------------------------------------------|
+| <S-[jk]>          | move paragraph [down/up]                   |
+| <S-[hl]>          | move paragraph and center screen [up/down] |
 

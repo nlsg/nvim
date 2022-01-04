@@ -7,6 +7,7 @@ syntax enable
 "=======
 
 call plug#begin()
+Plug 'https://github.com/vim-scripts/DrawIt'
 " Plug 'dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
@@ -131,10 +132,10 @@ imap <C-h> <Esc><C-w>hi
 imap <C-l> <Esc><C-w>li
 imap <C-j> <Esc><C-w>ji
 imap <C-k> <Esc><C-w>ki
-tmap <C-h> <C-y><C-w>h
-tmap <C-l> <C-y><C-w>l
-tmap <C-j> <C-y><C-w>j
-tmap <C-k> <C-y><C-w>k
+tmap <C-h> <C-\><C-n><C-w>h
+tmap <C-l> <C-\><C-n><C-w>l
+tmap <C-j> <C-\><C-n><C-w>j
+tmap <C-k> <C-\><C-n><C-w>k
 
 nmap d<C-h> <C-w>h:q<CR>
 nmap d<C-l> <C-w>l:q<CR>
@@ -155,6 +156,8 @@ nmap <leader>ll <CR>:vsp<CR><leader>e
 nmap <leader>jj <CR>:sp<CR><leader>e
 nmap <leader><leader>l :vsp<CR>:term<CR>i
 nmap <leader><leader>j :sp<CR>:term<CR>i
+nmap <leader>L :vsp<CR>:e ~/.tmp.sh<CR>:call ShellMapDown()<CR>
+nmap <leader>J :sp<CR>:e ~/.tmp.sh<CR>:call ShellMapRight()<CR>
 nmap <leader>lr :vsp<CR>:Ranger<CR>
 nmap <leader>jr :sp<CR>:Ranger<CR>
 
@@ -176,6 +179,7 @@ vmap <S-h> )zz
 
 "visual
 vmap / y<Esc>/<C-r>0<CR>
+vmap & y<Esc>:%s/<C-r>0//gc<left><left><left>
 
 "fzf-vim
 nmap <leader>$ :BLines<CR>
@@ -187,6 +191,10 @@ nmap <leader>p :w<CR>:Sopen<CR>push.py -m ""<Left>
 nmap <leader><leader>p :w<CR>:Sopen<CR>push.py<CR>
 
 "misc
+nmap C ct_
+nmap c, ct,
+nmap D dt_
+nmap d, dt,
 nmap U <C-r>
 nmap ,s :w<CR>:source<CR>
 nmap <C-s> :w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
@@ -213,10 +221,10 @@ nmap <leader>js <leader><leader>jvimlinks.py <C-y>""pi<CR>
 vmap <leader>ls y<leader><leader>lvimlinks.py <C-y>""pi<CR>
 vmap <leader>js y<leader><leader>jvimlinks.py <C-y>""pi<CR>
 "cheat-sheet
-nmap <leader>lc <leader><leader>lvimcheatsheet.py <C-y>""pi<CR>
-nmap <leader>jc <leader><leader>jvimcheatsheet.py <C-y>""pi<CR>
-vmap <leader>lc y<leader><leader>lvimcheatsheet.py <C-y>""pi<CR>
-vmap <leader>jc y<leader><leader>jvimcheatsheet.py <C-y>""pi<CR>
+nmap <leader>lc         I<C-r>=&filetype<CR> <Esc>dd<leader><leader>lvimcheatsheet.py <C-y>""pi<CR><C-\><C-n>gg
+nmap <leader>jc         I<C-r>=&filetype<CR> <Esc>dd<leader><leader>jvimcheatsheet.py <C-y>""pi<CR><C-\><C-n>gg
+vmap <leader>lc yo<Esc>pI<C-r>=&filetype<CR> <Esc>dd<leader><leader>lvimcheatsheet.py <C-y>""pi<CR><C-\><C-n>gg
+vmap <leader>jc yo<Esc>pI<C-r>=&filetype<CR> <Esc>dd<leader><leader>jvimcheatsheet.py <C-y>""pi<CR><C-\><C-n>gg
 
 "registers and macros
 "<C-r>q (in insert mode) to paste the macro stored in q
@@ -233,32 +241,36 @@ command! FormatJson normal! :%!python -m json.tool<CR>
 vmap ^ <C-c>
 nmap ^ <C-c>
 nmap ¨ <C-y>
+tmap ¨ <C-\><C-n>:q<CR>
 nmap ! <C-x>
+imap ¨ <C-y>
 
 nmap <leader>y :Sopen<CR><UP><CR>
-nmap <C-y>    mm_"sy$:SgotoTerm<CR>"spi<CR><C-y>:SleaveTerm<CR><Esc>Mm
-nmap <C-c>       "sy$:SgotoTerm<CR>"spi<CR><C-y>:SleaveTerm<CR><Esc>j
-imap <C-y> <Esc>_"sy$:SgotoTerm<CR>"spi<CR><C-y>:SleaveTerm<CR><Esc>o
-vmap <C-c>       "sy$:SgotoTerm<CR>"spi<CR><C-y>:SleaveTerm<CR><Esc>j
+nmap <C-y>    mm_"sy$:SgotoTerm<CR>"spi<CR><C-\><C-n>:SleaveTerm<CR><Esc>Mm
+nmap <C-c>       "sy$:SgotoTerm<CR>"spi<CR><C-\><C-n>:SleaveTerm<CR><Esc>j
+imap <C-y> <Esc>_"sy$:SgotoTerm<CR>"spi<CR><C-\><C-n>:SleaveTerm<CR><Esc>o
+vmap <C-c>       "sy$:SgotoTerm<CR>"spi<CR><C-\><C-n>:SleaveTerm<CR><Esc>j
 
 "autocmds
 "========
 autocmd BufEnter * silent! lcd %:p:h  "allways change dir to current buffer/window dir
 
-autocmd FileType python nmap <buffer> <leader>cl Inut.listing(<Esc>A)<Esc><C-y>
-autocmd FileType python nmap <buffer> <leader>cr Inut.ranger(<Esc>A)<Esc><C-y>
+autocmd FileType python nmap <buffer> <leader>cl Inut.listing(<Esc>A)<Esc>
+autocmd FileType python nmap <buffer> <leader>cr Inut.ranger(<Esc>A)<Esc>
+autocmd FileType python nmap <buffer> <leader>cp Iprint(<Esc>A)<Esc><C-y>
+autocmd FileType python nmap <buffer> <leader>ch Ihelp(<Esc>A)<Esc><C-y>
 autocmd FileType python nmap <buffer> <leader>cg A)<Esc>Inut.grep("",<left><left>
-autocmd FileType python nmap <buffer> <leader>cvl Inut.listing(<Esc>A)<Esc>
-autocmd FileType python nmap <buffer> <leader>cvr Inut.ranger(<Esc>A)<Esc>
-autocmd FileType python nmap <buffer> <leader>cc c<C-l>from os import system as s;s("clear")<CR><C-h>
+autocmd FileType python nmap <buffer> <leader>cc :SgotoTerm<CR>ifrom os import system as s;s("clear")<CR><C-\><C-n>:SleaveTerm<CR>
 
 autocmd FileType python nmap <buffer> <leader><leader>g <leader>g-j<C-x><C-k><esc>zz
-autocmd FileType python nmap <buffer> <C-x> :SopenPython<CR> python3 -i % <CR>i
+autocmd FileType python nmap <buffer> <C-x> :SopenPython<CR>
 autocmd FileType python nmap <buffer> <leader>lg <C-x><C-y>:sp /tmp/tmp.py<CR><C-j>--<C-k><C-j>--<C-h><C-l>
 
 autocmd FileType help wincmd L
 
 autocmd FileType vim nmap <buffer> <C-a> :w<CR>:source<CR>
+
+autocmd FileType sh nmap <buffer> <C-x> :w<CR>o<Esc>i<C-r>%<Esc>ddk:Sopen<CR>. <C-\><C-n>pi<CR> 
 
 augroup Racer
   autocmd!
