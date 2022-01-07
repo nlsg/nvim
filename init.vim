@@ -53,6 +53,7 @@ let g:airline_theme='owo'
 "settings
 "========
 let mapleader = " "
+nmap <C-Space> <leader>
 "2nd leader , 
 
 set mouse=n
@@ -103,13 +104,13 @@ nmap <leader>F zR
 nmap <C-t> :tabnew<CR>:term<Enter>i
 
 tmap <C-y> <C-\><C-n>
-tmap <C-x> <C-y>:q<CR>
+tmap <C-x> <C-y>:bd!<CR>
 
 "navigation
 "=========
 "buffer navigation
 nmap tt :tabnew ~/null<CR>:cd ~<CR><leader>e
-nmap <leader>d <C-h>:tabn<CR><leader>
+nmap <leader>d <C-h>:tabn<CR>
 nmap <leader>a <C-h>:tabp<CR> 
 nmap <leader>D <C-h>:tabmove +1<CR>
 nmap <leader>A <C-h>:tabmove -1<CR> 
@@ -124,10 +125,10 @@ command! Smovej normal <C-w>j
 command! Smovek normal <C-w>k
 command! Smovel normal <C-w>l
 
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+nmap <C-h> <Esc><C-w>h
+nmap <C-j> <Esc><C-w>j
+nmap <C-k> <Esc><C-w>k
+nmap <C-l> <Esc><C-w>l
 imap <C-h> <Esc><C-w>hi
 imap <C-l> <Esc><C-w>li
 imap <C-j> <Esc><C-w>ji
@@ -137,10 +138,15 @@ tmap <C-l> <C-\><C-n><C-w>l
 tmap <C-j> <C-\><C-n><C-w>j
 tmap <C-k> <C-\><C-n><C-w>k
 
-nmap d<C-h> <C-w>h:q<CR>
-nmap d<C-l> <C-w>l:q<CR>
-nmap d<C-j> <C-w>j:q<CR>
-nmap d<C-k> <C-w>k:q<CR>
+nmap d<C-h> <C-w>hi<C-\><C-n>:Sc<CR>
+nmap d<C-l> <C-w>li<C-\><C-n>:Sc<CR>
+nmap d<C-j> <C-w>ji<C-\><C-n>:Sc<CR>
+nmap d<C-k> <C-w>ki<C-\><C-n>:Sc<CR>
+nmap <C-d><C-h> d<C-h>
+nmap <C-d><C-l> d<C-l>
+nmap <C-d><C-j> d<C-j>
+nmap <C-d><C-k> d<C-k>
+
 nmap c<C-h> <C-w>hi
 nmap c<C-l> <C-w>li
 nmap c<C-j> <C-w>ji
@@ -156,8 +162,10 @@ nmap <leader>ll <CR>:vsp<CR><leader>e
 nmap <leader>jj <CR>:sp<CR><leader>e
 nmap <leader><leader>l :vsp<CR>:term<CR>i
 nmap <leader><leader>j :sp<CR>:term<CR>i
-nmap <leader>L :vsp<CR>:e ~/.tmp.sh<CR>:call ShellMapDown()<CR>
-nmap <leader>J :sp<CR>:e ~/.tmp.sh<CR>:call ShellMapRight()<CR>
+nmap <leader>H :vsp<CR><C-w>h:e ~/tmp.sh<CR>:call ShellMapLeft()<CR>
+nmap <leader>J        :sp<CR>:e ~/tmp.sh<CR>:call ShellMapRight()<CR>
+nmap <leader>K  :sp<CR><C-w>k:e ~/tmp.sh<CR>:call ShellMapUp()()<CR>
+nmap <leader>L       :vsp<CR>:e ~/tmp.sh<CR>:call ShellMapDown()<CR>
 nmap <leader>lr :vsp<CR>:Ranger<CR>
 nmap <leader>jr :sp<CR>:Ranger<CR>
 
@@ -199,7 +207,6 @@ nmap U <C-r>
 nmap ,s :w<CR>:source<CR>
 nmap <C-s> :w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
 imap <C-s> <Esc>:w<CR>:!rm ~/s.vim<CR>:mksession ~/s.vim<CR><CR>
-nmap <C-q> :q<CR>
 nmap P o<Esc>p
 nmap <leader>r :checktime<CR>
 nmap <leader>n nzz
@@ -211,15 +218,19 @@ imap <C-f> <Esc>/
 nmap & :%s/\<<C-r><C-w>\>//gc<Left><Left><Left>
 
 "translation [e]nglish [d]eutsch
-nmap <leader>le <leader><leader>ltrans -t en -s de "<C-y>""pi"<CR><C-h>
-nmap <leader>ld <leader><leader>ltrans -t de -s en "<C-y>""pi"<CR><C-h>
-nmap <leader>je <leader><leader>jtrans -t en -s de "<C-y>""pi"<CR><C-k>
-nmap <leader>jd <leader><leader>jtrans -t de -s en "<C-y>""pi"<CR><C-k>
+nmap <leader>jd dd<leader><leader>jtrans -t de -s en "<C-y>""pi"<CR><C-k>
+nmap <leader>ld dd<leader><leader>ltrans -t de -s en "<C-y>""pi"<CR><C-h>
+nmap <leader>je dd<leader><leader>jtrans -t en -s de "<C-y>""pi"<CR><C-k>
+nmap <leader>le dd<leader><leader>ltrans -t en -s de "<C-y>""pi"<CR><C-h>
+vmap <leader>jd y<leader><leader>jtrans -t de -s en "<C-y>""pi"<CR><C-k>
+vmap <leader>ld y<leader><leader>ltrans -t de -s en "<C-y>""pi"<CR><C-h>
+vmap <leader>je y<leader><leader>jtrans -t en -s de "<C-y>""pi"<CR><C-k>
+vmap <leader>le y<leader><leader>ltrans -t en -s de "<C-y>""pi"<CR><C-h>
 "links [s]earch
-nmap <leader>ls <leader><leader>lvimlinks.py <C-y>""pi<CR>
-nmap <leader>js <leader><leader>jvimlinks.py <C-y>""pi<CR>
-vmap <leader>ls y<leader><leader>lvimlinks.py <C-y>""pi<CR>
+nmap <leader>js dd<leader><leader>jvimlinks.py <C-y>""pi<CR>
+nmap <leader>ls dd<leader><leader>lvimlinks.py <C-y>""pi<CR>
 vmap <leader>js y<leader><leader>jvimlinks.py <C-y>""pi<CR>
+vmap <leader>ls y<leader><leader>lvimlinks.py <C-y>""pi<CR>
 "cheat-sheet
 nmap <leader>lc         I<C-r>=&filetype<CR> <Esc>dd<leader><leader>lvimcheatsheet.py <C-y>""pi<CR><C-\><C-n>gg
 nmap <leader>jc         I<C-r>=&filetype<CR> <Esc>dd<leader><leader>jvimcheatsheet.py <C-y>""pi<CR><C-\><C-n>gg
@@ -241,7 +252,7 @@ command! FormatJson normal! :%!python -m json.tool<CR>
 vmap ^ <C-c>
 nmap ^ <C-c>
 nmap ¨ <C-y>
-tmap ¨ <C-\><C-n>:q<CR>
+tmap ¨ <C-\><C-n>:bd!<CR>
 nmap ! <C-x>
 imap ¨ <C-y>
 
@@ -265,6 +276,11 @@ autocmd FileType python nmap <buffer> <leader>cc :SgotoTerm<CR>ifrom os import s
 autocmd FileType python nmap <buffer> <leader><leader>g <leader>g-j<C-x><C-k><esc>zz
 autocmd FileType python nmap <buffer> <C-x> :SopenPython<CR>
 autocmd FileType python nmap <buffer> <leader>lg <C-x><C-y>:sp /tmp/tmp.py<CR><C-j>--<C-k><C-j>--<C-h><C-l>
+
+autocmd TermEnter * set nonumber 
+autocmd TermEnter * set norelativenumber 
+autocmd TermLeave * set number 
+autocmd TermLeave * set relativenumber 
 
 autocmd FileType help wincmd L
 
