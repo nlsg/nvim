@@ -7,7 +7,15 @@ syntax enable
 "=======
 
 call plug#begin()
+Plug 'https://github.com/arcticicestudio/nord-vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-orgmode/orgmode'
+Plug 'nvim-neorg/neorg'
+Plug 'nvim-lua/plenary.nvim'
+
 Plug 'https://github.com/vim-scripts/DrawIt'
+Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
+
 " Plug 'dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
@@ -23,6 +31,87 @@ Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
 Plug 'https://github.com/tpope/vim-surround' " new surround(ys ..), ds.. ,cs.. 
 call plug#end()
+
+colorscheme nord
+hi Normal guibg=NONE ctermbg=NONE
+
+
+" org-mode
+lua << EOF
+  local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+  parser_config.org = {
+    install_info = {
+      url = 'https://github.com/milisims/tree-sitter-org',
+      revision = 'f110024d539e676f25b72b7c80b0fd43c34264ef',
+      files = {'src/parser.c', 'src/scanner.cc'},
+    },
+    filetype = 'org',
+  }
+
+  require'nvim-treesitter.configs'.setup {
+    -- If TS highlights are not enabled at all, or disabled via `disable` prop, highlighting will fallback to default Vim syntax highlighting
+    highlight = {
+      enable = true,
+      disable = {'org'}, -- Remove this to use TS highlighter for some of the highlights (Experimental)
+      additional_vim_regex_highlighting = {'org'}, -- Required since TS highlighter doesn't support all syntax features (conceal)
+    },
+    ensure_installed = {'org'}, -- Or run :TSUpdate org
+  }
+
+  require('orgmode').setup({
+    org_agenda_files = {'~/Dropbox/org/*', '~/my-orgs/**/*'},
+    org_default_notes_file = '~/Dropbox/org/refile.org',
+  })
+EOF
+  
+"neorg
+lua << EOF
+    require('neorg').setup {
+        -- Tell Neorg what modules to load
+        load = {
+            ["core.defaults"] = {}, -- Load all the default modules
+            ["core.norg.concealer"] = {}, -- Allows for use of icons
+            ["core.norg.dirman"] = { -- Manage your directories with Neorg
+                config = {
+                    workspaces = {
+                        my_workspace = "~/neorg"
+                    }
+                }
+            }
+        },
+    }
+  local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
+
+  parser_configs.norg = {
+      install_info = {
+          url = "https://github.com/nvim-neorg/tree-sitter-norg",
+          files = { "src/parser.c", "src/scanner.cc" },
+          branch = "main"
+      },
+  }
+
+  parser_configs.norg_meta = {
+      install_info = {
+          url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
+          files = { "src/parser.c" },
+          branch = "main"
+      },
+  }
+
+  parser_configs.norg_table = {
+      install_info = {
+          url = "https://github.com/nvim-neorg/tree-sitter-norg-table",
+          files = { "src/parser.c" },
+          branch = "main"
+      },
+  }
+  require('nvim-treesitter.configs').setup {
+      ensure_installed = { "norg", "norg_meta", "norg_table", "haskell", "cpp", "c", "javascript", "markdown" },
+      highlight = { -- Be sure to enable highlights if you haven't!
+          enable = true,
+      }
+  }
+EOF
 
 "rust
 "====
@@ -69,6 +158,11 @@ set splitright
 
 "mappings
 "========
+inoremap ( ()<Left>
+inoremap " ""<Left>
+inoremap ' ''<Left>
+inoremap [ []<Left>
+inoremap { {}<Left>
 
 "move to marker
 nmap M `
@@ -98,6 +192,7 @@ nmap c_ v_c
 "folds
 set foldmethod=indent
 nmap <leader>f za
+nmap <Tab> za
 nmap <leader>F zR
 
 "terminal
@@ -276,6 +371,8 @@ autocmd FileType python nmap <buffer> <leader>cc :SgotoTerm<CR>ifrom os import s
 autocmd FileType python nmap <buffer> <leader><leader>g <leader>g-j<C-x><C-k><esc>zz
 autocmd FileType python nmap <buffer> <C-x> :SopenPython<CR>
 autocmd FileType python nmap <buffer> <leader>lg <C-x><C-y>:sp /tmp/tmp.py<CR><C-j>--<C-k><C-j>--<C-h><C-l>
+
+autocmd FileType python imap <buffer> s. self.
 
 autocmd TermEnter * set nonumber 
 autocmd TermEnter * set norelativenumber 
