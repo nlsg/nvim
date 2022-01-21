@@ -4,18 +4,18 @@
 
 syntax enable
 "plugins
-"=======
+"=======                 
 
 call plug#begin()
+" Plug 'https://github.com/tpope/vim-repeat'
+Plug 'https://github.com/jiangmiao/auto-pairs'
+Plug 'https://github.com/tommcdo/vim-exchange'
+Plug 'https://github.com/Asheq/close-buffers.vim'
 Plug 'https://github.com/arcticicestudio/nord-vim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-Plug 'nvim-orgmode/orgmode'
-Plug 'nvim-neorg/neorg'
-Plug 'nvim-lua/plenary.nvim'
+"Plug 'nvim-lua/plenary.nvim'
 
 Plug 'https://github.com/vim-scripts/DrawIt'
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
-
 " Plug 'dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
@@ -26,92 +26,14 @@ Plug 'https://github.com/junegunn/goyo.vim'
 " Plug 'https://github.com/davidhalter/jedi-vim'
 Plug 'https://github.com/tmhedberg/SimpylFold'
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
+Plug 'https://github.com/tpope/vim-surround' " new surround(ys ..), ds.. ,cs.. 
 Plug 'https://github.com/junegunn/fzf.vim' " fzf ,f ,e ,g ...
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/vim-airline/vim-airline-themes'
-Plug 'https://github.com/tpope/vim-surround' " new surround(ys ..), ds.. ,cs.. 
 call plug#end()
 
 colorscheme nord
 hi Normal guibg=NONE ctermbg=NONE
-
-
-" org-mode
-lua << EOF
-  local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-  parser_config.org = {
-    install_info = {
-      url = 'https://github.com/milisims/tree-sitter-org',
-      revision = 'f110024d539e676f25b72b7c80b0fd43c34264ef',
-      files = {'src/parser.c', 'src/scanner.cc'},
-    },
-    filetype = 'org',
-  }
-
-  require'nvim-treesitter.configs'.setup {
-    -- If TS highlights are not enabled at all, or disabled via `disable` prop, highlighting will fallback to default Vim syntax highlighting
-    highlight = {
-      enable = true,
-      disable = {'org'}, -- Remove this to use TS highlighter for some of the highlights (Experimental)
-      additional_vim_regex_highlighting = {'org'}, -- Required since TS highlighter doesn't support all syntax features (conceal)
-    },
-    ensure_installed = {'org'}, -- Or run :TSUpdate org
-  }
-
-  require('orgmode').setup({
-    org_agenda_files = {'~/Dropbox/org/*', '~/my-orgs/**/*'},
-    org_default_notes_file = '~/Dropbox/org/refile.org',
-  })
-EOF
-  
-"neorg
-lua << EOF
-    require('neorg').setup {
-        -- Tell Neorg what modules to load
-        load = {
-            ["core.defaults"] = {}, -- Load all the default modules
-            ["core.norg.concealer"] = {}, -- Allows for use of icons
-            ["core.norg.dirman"] = { -- Manage your directories with Neorg
-                config = {
-                    workspaces = {
-                        my_workspace = "~/neorg"
-                    }
-                }
-            }
-        },
-    }
-  local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
-
-  parser_configs.norg = {
-      install_info = {
-          url = "https://github.com/nvim-neorg/tree-sitter-norg",
-          files = { "src/parser.c", "src/scanner.cc" },
-          branch = "main"
-      },
-  }
-
-  parser_configs.norg_meta = {
-      install_info = {
-          url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
-          files = { "src/parser.c" },
-          branch = "main"
-      },
-  }
-
-  parser_configs.norg_table = {
-      install_info = {
-          url = "https://github.com/nvim-neorg/tree-sitter-norg-table",
-          files = { "src/parser.c" },
-          branch = "main"
-      },
-  }
-  require('nvim-treesitter.configs').setup {
-      ensure_installed = { "norg", "norg_meta", "norg_table", "haskell", "cpp", "c", "javascript", "markdown" },
-      highlight = { -- Be sure to enable highlights if you haven't!
-          enable = true,
-      }
-  }
-EOF
 
 "rust
 "====
@@ -158,11 +80,6 @@ set splitright
 
 "mappings
 "========
-inoremap ( ()<Left>
-inoremap " ""<Left>
-inoremap ' ''<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
 
 "move to marker
 nmap M `
@@ -183,7 +100,7 @@ cmap ö @
 nmap <leader>o :setlocal spell! spelllang=en_us<CR>
 
 "goyo - center text
-nmap <leader>g :Goyo<CR>:set cursorline<CR>:hi CursorLine term=bold cterm=bold<CR>
+nmap <leader>g :Goyo<CR>:set cursorline<CR>:hi CursorLine term=bold cterm=bold<CR>:set number<CR>:set relativenumber<CR> 
  
 "delete line backwards
 nmap d_ v_d
@@ -253,8 +170,10 @@ nmap <leader><C-k> <C-w>K
 
 nmap <leader>lh :cd ~<CR>:vsp<CR><leader>e
 nmap <leader>jh :ch ~<CR>:sp<CR><leader>e
-nmap <leader>ll <CR>:vsp<CR><leader>e
-nmap <leader>jj <CR>:sp<CR><leader>e
+nmap <leader>ll :vsp<CR>:e . <CR>
+nmap <leader>jj :sp<CR>:e . <CR>
+nmap <leader>kk :sp<CR><C-w>k:e .<CR>
+nmap <leader>hh :vsp<CR><C-w>h:e . <CR> 
 nmap <leader><leader>l :vsp<CR>:term<CR>i
 nmap <leader><leader>j :sp<CR>:term<CR>i
 nmap <leader>H :vsp<CR><C-w>h:e ~/tmp.sh<CR>:call ShellMapLeft()<CR>
@@ -306,7 +225,7 @@ nmap P o<Esc>p
 nmap <leader>r :checktime<CR>
 nmap <leader>n nzz
 nmap <leader>N Nzz
-nmap <leader>ss :wa<CR>:mksession! ~/s.vim<CR><CR>:qa<CR>
+nmap <leader>ss :wa<CR>:mksession! session.vim<CR><CR>:qa<CR>
 nmap <leader>sp :wa<CR>:mksession! ~/p.vim<CR><CR>:qa<CR>
 imap <C-f> <Esc>/
 "find and replace
