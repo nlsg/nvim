@@ -23,7 +23,7 @@ Plug 'https://github.com/dhruvasagar/vim-table-mode'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbrouleff/bclose.vim'
 Plug 'https://github.com/junegunn/goyo.vim'
-" Plug 'https://github.com/davidhalter/jedi-vim'
+Plug 'https://github.com/davidhalter/jedi-vim'
 Plug 'https://github.com/tmhedberg/SimpylFold'
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'https://github.com/tpope/vim-surround' " new surround(ys ..), ds.. ,cs.. 
@@ -174,6 +174,8 @@ nmap <leader>ll :vsp<CR>:e . <CR>
 nmap <leader>jj :sp<CR>:e . <CR>
 nmap <leader>kk :sp<CR><C-w>k:e .<CR>
 nmap <leader>hh :vsp<CR><C-w>h:e . <CR> 
+nmap <leader>lp :vsp<CR>:term<CR>ipython3<CR><C-\><C-n><C-w>j
+nmap <leader>jp :sp<CR>:term<CR>ipython3<CR><C-\><C-n><C-w>k
 nmap <leader><leader>l :vsp<CR>:term<CR>i
 nmap <leader><leader>j :sp<CR>:term<CR>i
 nmap <leader>H :vsp<CR><C-w>h:e ~/tmp.sh<CR>:call ShellMapLeft()<CR>
@@ -225,7 +227,7 @@ nmap P o<Esc>p
 nmap <leader>r :checktime<CR>
 nmap <leader>n nzz
 nmap <leader>N Nzz
-nmap <leader>ss :wa<CR>:mksession! session.vim<CR><CR>:qa<CR>
+nmap <leader>ss :wa<CR>:mksession! session.vim<CR><CR>:xa<CR>
 nmap <leader>sp :wa<CR>:mksession! ~/p.vim<CR><CR>:qa<CR>
 imap <C-f> <Esc>/
 "find and replace
@@ -291,7 +293,7 @@ autocmd FileType python nmap <buffer> <leader><leader>g <leader>g-j<C-x><C-k><es
 autocmd FileType python nmap <buffer> <C-x> :SopenPython<CR>
 autocmd FileType python nmap <buffer> <leader>lg <C-x><C-y>:sp /tmp/tmp.py<CR><C-j>--<C-k><C-j>--<C-h><C-l>
 
-autocmd FileType python imap <buffer> s. self.
+autocmd FileType c nmap <buffer> <C-x> :Sopen<CR>echo hallo<CR>
 
 autocmd TermEnter * set nonumber 
 autocmd TermEnter * set norelativenumber 
