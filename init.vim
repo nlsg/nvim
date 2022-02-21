@@ -159,6 +159,11 @@ nmap <C-d><C-l> d<C-l>
 nmap <C-d><C-j> d<C-j>
 nmap <C-d><C-k> d<C-k>
 
+nmap g<C-h> <C-w>h<leader>g<Esc>
+nmap g<C-l> <C-w>l<leader>g<Esc>
+nmap g<C-j> <C-w>j<leader>g<Esc>
+nmap g<C-k> <C-w>k<leader>g<Esc>
+
 nmap c<C-h> <C-w>hi
 nmap c<C-l> <C-w>li
 nmap c<C-j> <C-w>ji
