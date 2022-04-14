@@ -316,6 +316,8 @@ autocmd FileType vim nmap <buffer> <C-a> :w<CR>:source<CR>
 
 autocmd FileType sh nmap <buffer> <C-x> :w<CR>o<Esc>i<C-r>%<Esc>ddk:Sopen<CR>. <C-\><C-n>pi<CR> 
 
+autocmd FileType hy nmap <buffer> <C-x> :w<CR>o<Esc>i<C-r>%<Esc>ddk:Sopen<CR>hy -i <C-\><C-n>pi<CR> 
+
 autocmd FileType tex nmap <buffer> <C-x> :w<CR>:!pdflatex <C-r>%<CR><CR>
 autocmd FileType tex nmap <buffer> <C-y> :!evince <C-r>%<DEL><DEL><DEL>pdf & <CR>
 
