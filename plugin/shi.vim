@@ -1,5 +1,6 @@
 "simple helper script, for better shell integration (shi)
 
+
 function! ShellMapLeft()
   command! SgotoTerm normal! <C-w>h
   command! SleaveTerm normal! <C-w>l
@@ -26,6 +27,7 @@ function! ShellMapDown()
   command! Sopen normal! :w<CR>:sp<CR>:terminal <CR>i
 endfunction
 
+" command! Sexecutor normal! :Sopen<CR> python executor.py <C-r>%
 command! Sh call ShellMapDown()
 command! Sl call ShellMapRight()
 command! Sj call ShellMapDown()
@@ -38,3 +40,4 @@ autocmd BufEnter * command! Sc normal :w<CR>:bd<CR>
 autocmd TermEnter * command! Sc normal :bd!<CR>
 autocmd FileType help command! Sc normal :bd!<CR>
 autocmd FileType Quickfix command! Sc normal :bd!<CR>
+autocmd FileType netrw command! Sc normal :bd!<CR

@@ -8,12 +8,15 @@ syntax enable
 
 call plug#begin()
 " Plug 'https://github.com/tpope/vim-repeat'
-Plug 'https://github.com/jiangmiao/auto-pairs'
+" Plug 'https://github.com/jiangmiao/auto-pairs'
+Plug 'hylang/vim-hy'
+Plug 'Olical/conjure'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 Plug 'https://github.com/tommcdo/vim-exchange'
 Plug 'https://github.com/Asheq/close-buffers.vim'
 Plug 'https://github.com/arcticicestudio/nord-vim'
 "Plug 'nvim-lua/plenary.nvim'
-
 Plug 'https://github.com/vim-scripts/DrawIt'
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 " Plug 'dense-analysis/ale'
@@ -21,9 +24,12 @@ Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 Plug 'https://github.com/dhruvasagar/vim-table-mode'
 Plug 'francoiscabrol/ranger.vim'
-Plug 'rbrouleff/bclose.vim'
+" Plug 'rbrouleff/bclose.vim'
 Plug 'https://github.com/junegunn/goyo.vim'
-Plug 'https://github.com/davidhalter/jedi-vim'
+" Plug 'https://github.com/davidhalter/jedi-vim'
+
+Plug 'Valloric/YouCompleteMe'
+
 Plug 'https://github.com/tmhedberg/SimpylFold'
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'https://github.com/tpope/vim-surround' " new surround(ys ..), ds.. ,cs.. 
@@ -48,22 +54,16 @@ let g:ale_completion_enabled = 1
 
 autocmd BufNewFile,BufRead *.rs set filetype=rust
 
-let g:jedi#goto_command = "<C-p>d"
-let g:jedi#goto_assignments_command = "<C-p>a"
-let g:jedi#goto_stubs_command = "<C-p>s"
-let g:jedi#goto_definitions_command = "<C-p>D"
-let g:jedi#documentation_command = "<C-p>p"
-let g:jedi#usages_command = "<C-p>n"
-let g:jedi#completions_command = "<C-p><Space>"
-let g:jedi#rename_command = "<C-p>r"
-
 let g:ranger_map_keys = 0
 
 let g:airline_theme='owo'
 
+let g:goyo_width = 120
+
 "settings
 "========
 let mapleader = " "
+let maplocalleader = " "
 nmap <C-Space> <leader>
 "2nd leader , 
 
@@ -100,17 +100,21 @@ cmap ö @
 nmap <leader>o :setlocal spell! spelllang=en_us<CR>
 
 "goyo - center text
-nmap <leader>g :Goyo<CR>:set cursorline<CR>:hi CursorLine term=bold cterm=bold<CR>:set number<CR>:set relativenumber<CR> 
+nmap <leader>g :Goyo <CR>:set cursorline<CR>:hi CursorLine term=bold cterm=bold<CR>:set number<CR>:set relativenumber<CR><Esc>
+nmap <leader>f :DoFullscreen<CR>
+nmap <leader>= <C-w>=
  
+nmap <leader>q :q!<CR>
+nmap <leader>w :w<CR>
 "delete line backwards
 nmap d_ v_d
 nmap c_ v_c
 
 "folds
 set foldmethod=indent
-nmap <leader>f za
 nmap <Tab> za
 nmap <leader>F zR
+nmap <leader><Tab> mmggVGzCMm
 
 "terminal
 nmap <C-t> :tabnew<CR>:term<Enter>i
@@ -121,7 +125,7 @@ tmap <C-x> <C-y>:bd!<CR>
 "navigation
 "=========
 "buffer navigation
-nmap tt :tabnew ~/null<CR>:cd ~<CR><leader>e
+nmap tt :tabnew ~/null<CR>:cd ~<CR>
 nmap <leader>d <C-h>:tabn<CR>
 nmap <leader>a <C-h>:tabp<CR> 
 nmap <leader>D <C-h>:tabmove +1<CR>
@@ -136,6 +140,7 @@ command! Smoveh normal <C-w>h
 command! Smovej normal <C-w>j
 command! Smovek normal <C-w>k
 command! Smovel normal <C-w>l
+command! Sc normal :bd!<CR>
 
 nmap <C-h> <Esc><C-w>h
 nmap <C-j> <Esc><C-w>j
@@ -173,8 +178,8 @@ nmap <leader><C-l> <C-w>L
 nmap <leader><C-j> <C-w>J
 nmap <leader><C-k> <C-w>K
 
-nmap <leader>lh :cd ~<CR>:vsp<CR><leader>e
-nmap <leader>jh :ch ~<CR>:sp<CR><leader>e
+nmap <leader>lh :cd ~<CR>:vsp<CR>
+nmap <leader>jh :ch ~<CR>:sp<CR>
 nmap <leader>ll :vsp<CR>:e . <CR>
 nmap <leader>jj :sp<CR>:e . <CR>
 nmap <leader>kk :sp<CR><C-w>k:e .<CR>
@@ -212,7 +217,6 @@ vmap & y<Esc>:%s/<C-r>0//gc<left><left><left>
 
 "fzf-vim
 nmap <leader>$ :BLines<CR>
-nmap <leader>e :Files<CR>
 nmap ,g :GFiles<CR>
 
 "push.py
@@ -266,6 +270,7 @@ vmap <leader>jc yo<Esc>pI<C-r>=&filetype<CR> <Esc>dd<leader><leader>jvimcheatshe
 nmap <C-g> :tabnew /tmp/tmp.py<CR><leader>g-j<C-x><C-k><esc>Go 
 
 " source shi-file
+nmap <leader>x <C-x>
 nmap <C-x> :Sopen<CR>
 
 command! FormatJson normal! :%!python -m json.tool<CR>
@@ -310,6 +315,9 @@ autocmd FileType help wincmd L
 autocmd FileType vim nmap <buffer> <C-a> :w<CR>:source<CR>
 
 autocmd FileType sh nmap <buffer> <C-x> :w<CR>o<Esc>i<C-r>%<Esc>ddk:Sopen<CR>. <C-\><C-n>pi<CR> 
+
+autocmd FileType tex nmap <buffer> <C-x> :w<CR>:!pdflatex <C-r>%<CR><CR>
+autocmd FileType tex nmap <buffer> <C-y> :!evince <C-r>%<DEL><DEL><DEL>pdf & <CR>
 
 augroup Racer
   autocmd!
