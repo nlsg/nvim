@@ -257,10 +257,10 @@ nmap <leader>ls dd<leader><leader>lvimlinks.py <C-y>""pi<CR>
 vmap <leader>js y<leader><leader>jvimlinks.py <C-y>""pi<CR>
 vmap <leader>ls y<leader><leader>lvimlinks.py <C-y>""pi<CR>
 "cheat-sheet
-nmap <leader>lc         I<C-r>=&filetype<CR> <Esc>dd<leader><leader>lvimcheatsheet.py <C-y>""pi<CR><C-\><C-n>gg
-nmap <leader>jc         I<C-r>=&filetype<CR> <Esc>dd<leader><leader>jvimcheatsheet.py <C-y>""pi<CR><C-\><C-n>gg
-vmap <leader>lc yo<Esc>pI<C-r>=&filetype<CR> <Esc>dd<leader><leader>lvimcheatsheet.py <C-y>""pi<CR><C-\><C-n>gg
-vmap <leader>jc yo<Esc>pI<C-r>=&filetype<CR> <Esc>dd<leader><leader>jvimcheatsheet.py <C-y>""pi<CR><C-\><C-n>gg
+nmap <leader>lc         I<C-r>=&filetype<CR> <Esc>dd<leader><leader>lcheatsheet.py <C-y>""pi<CR><C-\><C-n>gg
+nmap <leader>jc         I<C-r>=&filetype<CR> <Esc>dd<leader><leader>jcheatsheet.py <C-y>""pi<CR><C-\><C-n>gg
+vmap <leader>lc yo<Esc>pI<C-r>=&filetype<CR> <Esc>dd<leader><leader>lcheatsheet.py <C-y>""pi<CR><C-\><C-n>gg
+vmap <leader>jc yo<Esc>pI<C-r>=&filetype<CR> <Esc>dd<leader><leader>jcheatsheet.py <C-y>""pi<CR><C-\><C-n>gg
 
 "registers and macros
 "<C-r>q (in insert mode) to paste the macro stored in q
@@ -270,8 +270,8 @@ vmap <leader>jc yo<Esc>pI<C-r>=&filetype<CR> <Esc>dd<leader><leader>jvimcheatshe
 nmap <C-g> :tabnew /tmp/tmp.py<CR><leader>g-j<C-x><C-k><esc>Go 
 
 " source shi-file
-nmap <leader>x <C-x>
 nmap <C-x> :Sopen<CR>
+nmap <leader>x o<C-r>%<Esc>"ddd:Sopen<CR>watch -n .5 ./<C-\><C-n>"dpi<CR><C-\><C-n>:SleaveTerm<CR>
 
 command! FormatJson normal! :%!python -m json.tool<CR>
 
@@ -317,6 +317,7 @@ autocmd FileType vim nmap <buffer> <C-a> :w<CR>:source<CR>
 autocmd FileType sh nmap <buffer> <C-x> :w<CR>o<Esc>i<C-r>%<Esc>ddk:Sopen<CR>. <C-\><C-n>pi<CR> 
 
 autocmd FileType hy nmap <buffer> <C-x> :w<CR>o<Esc>i<C-r>%<Esc>ddk:Sopen<CR>hy -i <C-\><C-n>pi<CR> 
+autocmd FileType hy nmap <buffer> <C-y> :w<CR>o<Esc>i<C-r>%<Esc>ddk:Sopen<CR>hy2py <C-\><C-n>pi<CR> 
 
 autocmd FileType tex nmap <buffer> <C-x> :w<CR>:!pdflatex <C-r>%<CR><CR>
 autocmd FileType tex nmap <buffer> <C-y> :!evince <C-r>%<DEL><DEL><DEL>pdf & <CR>
@@ -330,5 +331,4 @@ augroup Racer
   autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
   autocmd FileType rust nmap <buffer> <leader>gD <Plug>(rust-doc-tab)
 augroup END
-
 
