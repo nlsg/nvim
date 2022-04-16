@@ -180,11 +180,11 @@ nmap <leader><C-k> <C-w>K
 
 nmap <leader>lh :cd ~<CR>:vsp<CR>
 nmap <leader>jh :ch ~<CR>:sp<CR>
-nmap <leader>ll :vsp<CR>:e 
+nmap <leader>ll :vsp <CR>:e 
 nmap <leader>jj :sp <CR>:e 
 nmap <leader>kk :sp <CR><C-w>k:e 
-nmap <leader>hh :vsp<CR><C-w>h:e 
-nmap <leader>lp :vsp<CR>:term<CR>ipython3<CR><C-\><C-n><C-w>j
+nmap <leader>hh :vsp <CR><C-w>h:e 
+nmap <leader>lp :vsp <CR>:term<CR>ipython3<CR><C-\><C-n><C-w>j
 nmap <leader>jp :sp<CR>:term<CR>ipython3<CR><C-\><C-n><C-w>k
 nmap <leader><leader>l :vsp<CR>:term<CR>i
 nmap <leader><leader>j :sp<CR>:term<CR>i
