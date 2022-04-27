@@ -11,7 +11,7 @@ call plug#begin()
 " Plug 'https://github.com/jiangmiao/auto-pairs'
 Plug 'hylang/vim-hy'
 Plug 'Olical/conjure'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim' ", {'branch': 'release'}
 
 Plug 'https://github.com/tommcdo/vim-exchange'
 Plug 'https://github.com/Asheq/close-buffers.vim'
@@ -271,7 +271,7 @@ nmap <C-g> :tabnew /tmp/tmp.py<CR><leader>g-j<C-x><C-k><esc>Go
 
 " source shi-file
 nmap <C-x> :Sopen<CR>
-nmap <leader>x o<C-r>%<Esc>"ddd:Sopen<CR>watch -n .5 ./<C-\><C-n>"dpi<CR><C-\><C-n>:SleaveTerm<CR>
+nmap <leader>x o./<C-r>%<Esc>"ddd:Sopen<CR>watch -n .5 <C-\><C-n>"dpi<CR><C-\><C-n>:SleaveTerm<CR>
 
 command! FormatJson normal! :%!python -m json.tool<CR>
 
@@ -282,7 +282,6 @@ tmap ¨ <C-\><C-n>:bd!<CR>
 nmap ! <C-x>
 imap ¨ <C-y>
 
-nmap <leader>y :Sopen<CR><UP><CR>
 nmap <C-y>    mm_"sy$:SgotoTerm<CR>"spi<CR><C-\><C-n>:SleaveTerm<CR><Esc>Mm
 nmap <C-c>       "sy$:SgotoTerm<CR>"spi<CR><C-\><C-n>:SleaveTerm<CR><Esc>j
 imap <C-y> <Esc>_"sy$:SgotoTerm<CR>"spi<CR><C-\><C-n>:SleaveTerm<CR><Esc>o
@@ -292,12 +291,16 @@ vmap <C-c>       "sy$:SgotoTerm<CR>"spi<CR><C-\><C-n>:SleaveTerm<CR><Esc>j
 "========
 autocmd BufEnter * silent! lcd %:p:h  "allways change dir to current buffer/window dir
 
-autocmd FileType python nmap <buffer> <leader>cl Inut.listing(<Esc>A)<Esc>
-autocmd FileType python nmap <buffer> <leader>cr Inut.ranger(<Esc>A)<Esc>
-autocmd FileType python nmap <buffer> <leader>cp Iprint(<Esc>A)<Esc><C-y>
-autocmd FileType python nmap <buffer> <leader>ch Ihelp(<Esc>A)<Esc><C-y>
-autocmd FileType python nmap <buffer> <leader>cg A)<Esc>Inut.grep("",<left><left>
-autocmd FileType python nmap <buffer> <leader>cc :SgotoTerm<CR>ifrom os import system as s;s("clear")<CR><C-\><C-n>:SleaveTerm<CR>
+autocmd FileType hy nmap  <leader>c "sya(:SgotoTerm<CR>"spi<CR><C-\><C-n>:SleaveTerm<CR><Esc>j
+autocmd FileType hy nmap  <leader>y :w<CR>ohy2py <C-r>%  \| cnav.py<Esc>ddk:Sopen<CR><C-\><C-n>pi<CR> 
+ nmap <C-f> :!echo Hallo Vim<CR>
+
+" autocmd FileType python nmap <buffer> <leader>cl Inut.listing(<Esc>A)<Esc>
+" autocmd FileType python nmap <buffer> <leader>cr Inut.ranger(<Esc>A)<Esc>
+" autocmd FileType python nmap <buffer> <leader>cp Iprint(<Esc>A)<Esc><C-y>
+" autocmd FileType python nmap <buffer> <leader>ch Ihelp(<Esc>A)<Esc><C-y>
+" autocmd FileType python nmap <buffer> <leader>cg A)<Esc>Inut.grep("",<left><left>
+" autocmd FileType python nmap <buffer> <leader>cc :SgotoTerm<CR>ifrom os import system as s;s("clear")<CR><C-\><C-n>:SleaveTerm<CR>
 
 autocmd FileType python nmap <buffer> <leader><leader>g <leader>g-j<C-x><C-k><esc>zz
 autocmd FileType python nmap <buffer> <C-x> :SopenPython<CR>
@@ -316,8 +319,7 @@ autocmd FileType vim nmap <buffer> <C-a> :w<CR>:source<CR>
 
 autocmd FileType sh nmap <buffer> <C-x> :w<CR>o<Esc>i<C-r>%<Esc>ddk:Sopen<CR>. <C-\><C-n>pi<CR> 
 
-autocmd FileType hy nmap <buffer> <C-x> :w<CR>o<Esc>i<C-r>%<Esc>ddk:Sopen<CR>hy -i <C-\><C-n>pi<CR> 
-autocmd FileType hy nmap <buffer> <C-y> :w<CR>o<Esc>i<C-r>%<Esc>ddk:Sopen<CR>hy2py <C-\><C-n>pi<CR> 
+autocmd FileType hy nmap <buffer> <C-x> :w<CR>o<C-r>%<Esc>ddk:Sopen<CR>hy -i <C-\><C-n>pi<CR> 
 
 autocmd FileType tex nmap <buffer> <C-x> :w<CR>:!pdflatex <C-r>%<CR><CR>
 autocmd FileType tex nmap <buffer> <C-y> :!evince <C-r>%<DEL><DEL><DEL>pdf & <CR>
