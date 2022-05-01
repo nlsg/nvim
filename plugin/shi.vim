@@ -38,6 +38,6 @@ call ShellMapDown()
 
 autocmd BufEnter * command! Sc normal :w<CR>:bd<CR>
 autocmd TermEnter * command! Sc normal :bd!<CR>
-autocmd FileType help command! Sc normal :bd!<CR>
+autocmd FileType Help command! Sc normal :bd!<CR>
 autocmd FileType Quickfix command! Sc normal :bd!<CR>
 autocmd FileType netrw command! Sc normal :bd!<CR
