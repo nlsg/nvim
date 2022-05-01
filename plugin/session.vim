@@ -11,9 +11,9 @@ set shortmess=aoO
 argglobal
 %argdel
 $argadd init.vim
-edit .config/nvim/plugin/shi.vim
+edit .config/nvim/plugin
 argglobal
-balt term://~//291177:ranger\ --choosefiles=/tmp/chosenfile\ --selectfile=\"init.vim\"
+balt .config/nvim/plugin/shi.vim
 setlocal fdm=expr
 setlocal fde=utils#VimFolds(v:lnum)
 setlocal fmr={{{,}}}
@@ -22,16 +22,17 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 42 - ((25 * winheight(0) + 17) / 34)
+let s:l = 8 - ((7 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 42
-normal! 02|
+keepjumps 8
+normal! 0
 lcd ~/.config/nvim/plugin
 tabnext 1
+badd +1 ~/
 badd +1 ~/init.vim
-badd +0 ~/.config/nvim/plugin/shi.vim
+badd +43 ~/.config/nvim/plugin/shi.vim
 badd +29 term://~//291177:ranger\ --choosefiles=/tmp/chosenfile\ --selectfile=\"init.vim\"
 badd +1 ~/push.ini
 badd +3 /usr/share/nvim/runtime/doc/help.txt

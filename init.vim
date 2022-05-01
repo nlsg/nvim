@@ -281,7 +281,6 @@ autocmd BufEnter * silent! lcd %:p:h  "allways change dir to current buffer/wind
 
 autocmd FileType hy nmap  <leader>c "sya(:SgotoTerm<CR>"spi<CR><C-\><C-n>:SleaveTerm<CR><Esc>j
 autocmd FileType hy nmap  <leader>y :w<CR>ohy2py <C-r>%  \| cnav.py<Esc>ddk:Sopen<CR><C-\><C-n>pi<CR> 
-nmap <C-f> :!echo Hallo Vim<CR>
 
 " autocmd FileType python nmap <buffer> <leader>cl Inut.listing(<Esc>A)<Esc>
 " autocmd FileType python nmap <buffer> <leader>cr Inut.ranger(<Esc>A)<Esc>
@@ -317,11 +316,11 @@ autocmd BufNewFile,BufRead *.rs set filetype=rust
 
 augroup Racer
 autocmd!
-autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
-autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
-autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
-autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
-autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
-autocmd FileType rust nmap <buffer> <leader>gD <Plug>(rust-doc-tab)
+  autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
+  autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
+  autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
+  autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
+  autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
+  autocmd FileType rust nmap <buffer> <leader>gD <Plug>(rust-doc-tab)
 augroup END
 
